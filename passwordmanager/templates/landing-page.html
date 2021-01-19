@@ -3,20 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <title>BoardLock</title>
 
     <style>
-        .center {
-            position: absolute;
-            left: 14%;
-            top: 15%;
-            width: 1200px;
-            height: 500px;
-            margin-left: -10px;
-            margin-top: -10px;
-        }
         body {
             font-family: Arial, serif;
+            background: lightblue url("/static/images/boardwalk.jpg") no-repeat fixed center;
         }
         input[type=text], input[type=password] {
             width: 100%;
@@ -48,6 +40,16 @@
         img {
             max-width: 100%;
             max-height: 100%;
+            border-radius: 12px;
+        }
+        .center {
+            position: absolute;
+            left: 14%;
+            top: 25%;
+            width: 1200px;
+            height: 500px;
+            margin-left: -10px;
+            margin-top: -10px;
         }
         .img-container {
             height: 475px;
@@ -59,12 +61,12 @@
             width: 400px;
             display:inline-block;
             position: absolute;
-            top: 25%;
+            top: 12%;
         }
         .text-container {
             width: 1200px;
             position: absolute;
-            top: 10%;
+            top: 8%;
             right: 12%;
             text-align: center;
             line-height: 2px;
@@ -83,7 +85,7 @@
         <div class="form-container">
             <form action="/" method="post">
                 <label for="uname"><b>Username</b></label>
-                <input type="text" required>
+                <input type="text" value="uname" required>
                 <label for="psw"><b>Root Password</b></label>
                 <input type="password" required>
                 <button type="submit">Login</button>
@@ -92,7 +94,7 @@
         </div>
     </div>
     <div class="text-container">
-        <p style="font-size: 30px; font-weight: bold">Welcome to my online password manager!</p>
+        <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
         <p style="font-size: 20px">A secure online password storage solution.</p>
         <p style="font-size: 15px">(Please do not store real login information, this is an educational project using personal servers.)</p>
     </div>
