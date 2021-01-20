@@ -8,7 +8,11 @@
     <style>
         body {
             font-family: Arial, serif;
-            background: lightblue url("/static/images/boardwalk.jpg") no-repeat fixed center;
+            background: lightblue url("/static/images/boardwalk.jpg") no-repeat center center fixed;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
         input[type=text], input[type=password] {
             width: 100%;
@@ -45,9 +49,8 @@
         .center {
             position: absolute;
             left: 14%;
-            top: 25%;
+            top: 13%;
             width: 1200px;
-            height: 500px;
             margin-left: -10px;
             margin-top: -10px;
         }
@@ -61,15 +64,12 @@
             width: 400px;
             display:inline-block;
             position: absolute;
-            top: 12%;
+            top: 26%;
         }
         .text-container {
-            width: 1200px;
-            position: absolute;
-            top: 8%;
-            right: 12%;
             text-align: center;
             line-height: 2px;
+            margin-bottom: 30px;
         }
 
     </style>
@@ -80,25 +80,24 @@
 
 <body>
 
-    <div class="center">
-        <div class="img-container"><img src="/static/images/landing-page.png"></div>
-        <div class="form-container">
-            <form action="/" method="post">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" value="uname" required>
-                <label for="psw"><b>Root Password</b></label>
-                <input type="password" required>
-                <button type="submit">Login</button>
-            </form>
-            <a href="http://127.0.01:5000/signup" class="button" id="create-button" style="text-align: center; text-decoration: none">Create New Account</a>
-        </div>
-    </div>
+<div class="center">
     <div class="text-container">
         <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
         <p style="font-size: 20px">A secure online password storage solution.</p>
         <p style="font-size: 15px">(Please do not store real login information, this is an educational project using personal servers.)</p>
     </div>
-
+    <div class="img-container"><img src="/static/images/landing-page.png"></div>
+    <div class="form-container">
+        <form action="/" method="post">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" required>
+            <label for="psw"><b>Root Password</b></label>
+            <input type="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="http://127.0.01:5000/signup" class="button" id="create-button" style="text-align: center; text-decoration: none">Create New Account</a>
+    </div>
+</div>
 </body>
 
 </html>
