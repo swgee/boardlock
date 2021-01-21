@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BoardLock</title>
+    <link rel="stylesheet" href="/static/css/landing-page.css">
+</head>
+
+
+<body>
+
+<div class="center">
+    <div class="text-container">
+        <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
+        <p style="font-size: 20px">A secure online password storage solution.</p>
+        <p style="font-size: 15px">(Please do not store real login information, this is an educational project using personal servers.)</p>
+    </div>
+    <div class="img-container"><img src="/static/images/landing-page.png"></div>
+    <div class="form-container">
+        <form action="/" method="post">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" required>
+            <label for="psw"><b>Root Password</b></label>
+            <input type="password" required>
+            <button type="submit">Login</button>
+        </form>
+        <a href="http://127.0.01:5000/signup" class="button" id="create-button" style="text-align: center; text-decoration: none">Create New Account</a>
+    </div>
+</div>
+</body>
+
+</html>
