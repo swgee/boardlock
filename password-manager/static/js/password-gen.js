@@ -54,7 +54,7 @@ function generate() {
     if (validInput) {
         numChar = parseInt(numCharInput, 10);
         if (numChar <= 128 && numChar >= 1 && (lowercaseBool || uppercaseBool || numbersBool || specialBool)) {
-            errorButton.innerHTML = "";
+            errorButton.innerHTML = " ";
             document.getElementById('output').value = random_string();
         } else {
             print_error();

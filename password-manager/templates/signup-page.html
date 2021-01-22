@@ -8,12 +8,34 @@
     <script>
         $(function(){
             $("#password-generator").load("http://127.0.0.1:5000/static/html/password-generator.html");
+            //$("#password-generator").load("http://ipaddr:port/static/html/password-generator.html");
         });
     </script>
 </head>
+
 <body>
-<div class="wrapper">
-    <div id="password-generator"></div>
+<div class="top-container">
+    <div class="form-container">
+        <form id="credentials" method="post">
+            <div>
+                <label for="username">Username: </label>
+                <input id="username" type="text" required>
+            </div>
+            <div>
+                <label for="psw">Password: </label>
+                <input id="psw" type="password" required>
+            </div>
+            <div>
+                <label for="confirm-psw">Confirm Password: </label>
+                <input id="confirm-psw" type="password" required>
+            </div>
+        </form>
+    </div>
+    <div class="show-button">
+        <button id="show-password" style="padding: 5px 10px 5px 10px;">Show</button>
+    </div>
 </div>
+<div id="password-generator" class="random"></div>
+<button type="submit" form="credentials" value="Submit">Create New Account</button>
 </body>
 </html>

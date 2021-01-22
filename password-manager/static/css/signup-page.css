@@ -6,7 +6,31 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-
-.wrapper {
-    text-align: center;
+.top-container {
+    margin: 0 auto;
+    width: 570px;
+}
+.form-container {
+    font-size: 20px;
+    padding-top: 20px;
+    width: 480px;
+    text-align: right;
+    display: inline-block;
+}
+.random {
+    padding-top: 15px;
+    margin: 0 auto;
+    width: 490px;
+}
+.form-container input {
+    width: 300px;
+}
+.form-container div {
+    padding-top: 5px;
+}
+input:invalid {
+    box-shadow: none;
+}
+.show-button {
+    display: inline-block;
 }
