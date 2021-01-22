@@ -16,16 +16,16 @@
         <p style="font-size: 20px">A secure online password storage solution.</p>
         <p style="font-size: 15px">(Please do not store real login information, this is an educational project using personal servers.)</p>
     </div>
-    <div class="img-container"><img src="/static/images/landing-page.png"></div>
+    <div class="img-container"><img alt="background" src="/static/images/landing-page.png"></div>
     <div class="form-container">
         <form action="/" method="post">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" required>
-            <label for="psw"><b>Root Password</b></label>
-            <input type="password" required>
+            <label for="username"><b>Username</b></label>
+            <input id="username" type="text" required>
+            <label for="password"><b>Root Password</b></label>
+            <input id="password" type="password" required>
             <button type="submit">Login</button>
         </form>
-        <a href="http://127.0.01:5000/signup" class="button" id="create-button" style="text-align: center; text-decoration: none">Create New Account</a>
+        <a href="http://127.0.01:5000/signup" class="button" style="text-decoration: none">Create New Account</a>
     </div>
 </div>
 </body>

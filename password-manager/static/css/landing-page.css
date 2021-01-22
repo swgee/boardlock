@@ -6,7 +6,7 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-input[type=text], input[type=password] {
+input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -19,47 +19,36 @@ a, button {
     color: white;
     border: none;
     cursor: pointer;
-    display:inline-block;
-}
-a {
-    width: 400px;
-    line-height: 40px;
-}
-button {
-    padding: 14px 20px;
-    margin: 8px 0;
-    width: 400px;
+    display: inline-block;
+    margin: 4px;
+    padding: 12px;
+    text-align: center;
+    width: -moz-available
 }
 a:hover, button:hover {
     opacity: 0.8;
 }
-img {
-    max-width: 100%;
-    max-height: 100%;
-    border-radius: 12px;
+.center{
+    text-align: center;
+    width: 1100px;
+    margin: 0 auto;
 }
-.center {
-    position: absolute;
-    left: 14%;
-    top: 13%;
-    width: 1200px;
-    margin-left: -10px;
-    margin-top: -10px;
+img, .img-container  {
+    width: 600px;
 }
 .img-container {
-    height: 475px;
-    width: 700px;
     display:inline-block;
 }
 .form-container {
-    padding: 16px;
-    width: 400px;
-    display:inline-block;
-    position: absolute;
-    top: 26%;
+    max-width: 400px;
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    padding-left: 25px;
+    padding-top: 40px;
 }
 .text-container {
-    text-align: center;
     line-height: 2px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
+    padding-top: 10px;
 }
