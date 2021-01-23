@@ -14,28 +14,32 @@
 </head>
 
 <body>
-<div class="top-container">
-    <div class="form-container">
-        <form id="credentials" method="post">
-            <div>
-                <label for="username">Username: </label>
-                <input id="username" type="text" required>
-            </div>
-            <div>
-                <label for="psw">Password: </label>
-                <input id="psw" type="password" required>
-            </div>
-            <div>
-                <label for="confirm-psw">Confirm Password: </label>
-                <input id="confirm-psw" type="password" required>
-            </div>
-        </form>
+<div class="signup">
+    <div class="top-container">
+        <div class="form-container">
+            <form id="credentials" method="post">
+                <div>
+                    <label for="username">Username: </label>
+                    <input id="username" type="text" required>
+                </div>
+                <div>
+                    <label for="psw">Root Password: </label>
+                    <input id="psw" type="password" required>
+                </div>
+                <div>
+                    <label for="confirm-psw">Confirm Password: </label>
+                    <input id="confirm-psw" type="password" required>
+                </div>
+            </form>
+        </div>
+        <button class="show-password" onclick="show(document.getElementById('psw'), this)">Show</button>
     </div>
-    <div class="show-button">
-        <button id="show-password" style="padding: 5px 10px 5px 10px;">Show</button>
+    <div class="submit">
+        <p>Save your root password in a secure location.</p>
+        <p>Without it, your data will be unrecoverable.</p>
+        <button type="submit" form="credentials" value="Submit">Create New Account</button>
     </div>
+    <div id="password-generator" class="random-container"></div>
 </div>
-<div id="password-generator" class="random"></div>
-<button type="submit" form="credentials" value="Submit">Create New Account</button>
 </body>
 </html>

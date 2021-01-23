@@ -6,31 +6,55 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-.top-container {
+.signup .top-container {
     margin: 0 auto;
-    width: 570px;
+    width: 535px;
+    padding-bottom: 15px;
 }
-.form-container {
+.signup .form-container {
     font-size: 20px;
     padding-top: 20px;
     width: 480px;
     text-align: right;
     display: inline-block;
 }
-.random {
-    padding-top: 15px;
+.signup .random-container {
+    padding-top: 25px;
     margin: 0 auto;
     width: 490px;
+    height: 181px;
 }
-.form-container input {
+.signup .form-container input {
     width: 300px;
 }
-.form-container div {
+.signup .form-container div {
     padding-top: 5px;
 }
-input:invalid {
+.signup input:invalid {
     box-shadow: none;
 }
-.show-button {
+.signup .top-container .show-password {
+    padding: 1px 1px 1px 1px;
+    position: relative;
+    bottom: 29px;
+    font-family: Arial, serif;
+    cursor: pointer;
+    border: none;
+}
+.signup .submit button {
+    font-family: Arial, serif;
+    font-size: 18px;
     display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.signup .submit {
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+    line-height: 2px;
 }

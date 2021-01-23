@@ -82,3 +82,17 @@ function random_string() {
     }
     return password;
 }
+
+function show(field, button) {
+    if (field.type === "password") {
+        field.type = "text";
+        button.classList.add("active");
+    }
+    else {
+        field.type = "password";
+        button.classList.remove("active");
+    }
+}
+function fill() {
+    document.getElementById("psw").value = document.getElementById("output").value;
+}
