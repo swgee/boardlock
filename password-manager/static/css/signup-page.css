@@ -52,6 +52,9 @@ body {
     outline: none;
     border: none;
 }
+.signup .submit button:hover {
+    opacity: 0.8;
+}
 .signup .submit {
     margin: 0 auto;
     width: 400px;
