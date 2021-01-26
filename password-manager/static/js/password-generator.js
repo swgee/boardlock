@@ -1,13 +1,13 @@
-const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-const lowercase = "abcdefghijklmnopqrstuvwxyz"
-const numbers = "0123456789"
-const special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~" // from owasp.org/www-community/password-special-characters
-let uppercaseBool = false
-let lowercaseBool = false
-let numbersBool = false
-let specialBool = false
+const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lowercase = "abcdefghijklmnopqrstuvwxyz";
+const numbers = "0123456789";
+const special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // from owasp.org/www-community/password-special-characters
+let uppercaseBool = false;
+let lowercaseBool = false;
+let numbersBool = false;
+let specialBool = false;
 let numChar;
-let errorButton = document.getElementById("error");
+let errormsg = document.getElementById("error");
 
 let numCharInputField = document.getElementById("numCharID");
 numCharInputField.addEventListener("keypress", function(event) {
@@ -54,7 +54,7 @@ function generate() {
     if (validInput) {
         numChar = parseInt(numCharInput, 10);
         if (numChar <= 128 && numChar >= 1 && (lowercaseBool || uppercaseBool || numbersBool || specialBool)) {
-            errorButton.innerHTML = " ";
+            errormsg.innerHTML = " ";
             document.getElementById('output').value = random_string();
         } else {
             print_error();
@@ -64,7 +64,7 @@ function generate() {
     }
 
     function print_error() {
-        errorButton.innerHTML = "Must enter an integer between 1 and 128 with at least one option selected.";
+        errormsg.innerHTML = "Must enter an integer between 1 and 128 with at least one option selected.";
     }
 }
 
@@ -83,7 +83,7 @@ function random_string() {
     return password;
 }
 
-function show(field, button) {
+function show_password(field, button) {
     if (field.type === "password") {
         field.type = "text";
         button.classList.add("active");
@@ -93,6 +93,4 @@ function show(field, button) {
         button.classList.remove("active");
     }
 }
-function fill() {
-    document.getElementById("psw").value = document.getElementById("output").value;
-}
+

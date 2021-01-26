@@ -7,39 +7,48 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function(){
-            $("#password-generator").load("https://benkofman.com/static/html/password-generator.html");
-            //$("#password-generator").load("http://127.0.0.1:5000/static/html/password-generator.html");
+            //$("#password-generator").load("https://benkofman.com/static/html/password-generator.html");
+            $("#password-generator").load("http://127.0.0.1:5000/static/html/password-generator.html");
         });
     </script>
 </head>
 
 <body>
 <div class="signup">
+    <a href="https://benkofman.com" class="button" style="text-decoration: none; text-align: end">Home</a>
     <div class="top-container">
         <div class="form-container">
-            <form id="credentials" method="post">
+            <form id="credentials" method="POST">
                 <div>
                     <label for="username">Username: </label>
                     <input id="username" type="text" required>
                 </div>
                 <div>
                     <label for="psw">Root Password: </label>
-                    <input id="psw" type="password" required>
-                </div>
-                <div>
-                    <label for="confirm-psw">Confirm Password: </label>
-                    <input id="confirm-psw" type="password" required>
+                    <input id="psw" type="password" oninput="validation()" required>
                 </div>
             </form>
+            <div>
+                <label for="confirm-psw">Confirm Password: </label>
+                <input id="confirm-psw" type="password" oninput="validation()" required>
+            </div>
         </div>
-        <button class="show-password" onclick="show(document.getElementById('psw'), this)">Show</button>
+        <button class="show-password" onclick="show_password(document.getElementById('psw'), this)">Show</button>
+    </div>
+    <div class="requirement-container">
+        <p>Requirements: </p>
+        <p id="lengthCheck" class="middle">12 characters</p>
+        <p id="specialCheck" class="middle">1 special character</p>
+        <p id="numberCheck" class="middle">1 number</p>
+        <p id="capitalCheck">1 capital letter</p>
     </div>
     <div class="submit">
         <p>Save your root password in a secure location.</p>
         <p>Without it, your data will be unrecoverable.</p>
-        <button type="submit" form="credentials" value="Submit">Create New Account</button>
+        <button id="submitButton">Create New Account</button>
     </div>
     <div id="password-generator" class="random-container"></div>
+    <script src="/static/js/signup-page.js"></script>
 </div>
 </body>
 </html>

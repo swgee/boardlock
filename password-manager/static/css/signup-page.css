@@ -9,11 +9,9 @@ body {
 .signup .top-container {
     margin: 0 auto;
     width: 535px;
-    padding-bottom: 15px;
 }
 .signup .form-container {
     font-size: 20px;
-    padding-top: 20px;
     width: 480px;
     text-align: right;
     display: inline-block;
@@ -41,7 +39,7 @@ body {
     cursor: pointer;
     border: none;
 }
-.signup .submit button {
+.signup a, .submit button {
     font-family: Arial, serif;
     font-size: 18px;
     display: inline-block;
@@ -52,12 +50,34 @@ body {
     outline: none;
     border: none;
 }
-.signup .submit button:hover {
+.signup a:hover, .submit button:hover {
     opacity: 0.8;
+}
+.submit button:disabled {
+    opacity: 0.5;
 }
 .signup .submit {
     margin: 0 auto;
     width: 400px;
     text-align: center;
     line-height: 2px;
+}
+.signup .requirement-container {
+    font-size: 16px;
+    text-align: center;
+    width: 535px;
+    margin: 0 auto;
+    line-height: 6px;
+}
+.signup .requirement-container p {
+    display: inline-block;
+}
+.signup .requirement-container .middle::after {
+    content: ', ';
+}
+.complete {
+    color: green;
+}
+.incomplete {
+    color: red;
 }
