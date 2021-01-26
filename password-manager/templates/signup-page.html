@@ -21,31 +21,32 @@
             <form id="credentials" method="POST">
                 <div>
                     <label for="username">Username: </label>
-                    <input id="username" type="text" required>
+                    <input id="username" type="text" name="username" oninput="validation()" required>
                 </div>
                 <div>
                     <label for="psw">Root Password: </label>
-                    <input id="psw" type="password" oninput="validation()" required>
+                    <input id="psw" type="password" name="password" oninput="validation()" required>
                 </div>
             </form>
             <div>
                 <label for="confirm-psw">Confirm Password: </label>
-                <input id="confirm-psw" type="password" oninput="validation()" required>
+                <input id="confirm-psw" type="password" oninput="validation()">
             </div>
         </div>
         <button class="show-password" onclick="show_password(document.getElementById('psw'), this)">Show</button>
     </div>
     <div class="requirement-container">
-        <p>Requirements: </p>
+        <p>Password requirements: </p>
         <p id="lengthCheck" class="middle">12 characters</p>
         <p id="specialCheck" class="middle">1 special character</p>
         <p id="numberCheck" class="middle">1 number</p>
-        <p id="capitalCheck">1 capital letter</p>
+        <p id="capitalCheck" class="middle">1 capital letter</p>
+        <p id="match">passwords match</p>
     </div>
     <div class="submit">
         <p>Save your root password in a secure location.</p>
         <p>Without it, your data will be unrecoverable.</p>
-        <button id="submitButton">Create New Account</button>
+        <button id="submitButton" type="submit" form="credentials">Create New Account</button>
     </div>
     <div id="password-generator" class="random-container"></div>
     <script src="/static/js/signup-page.js"></script>

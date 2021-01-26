@@ -8,7 +8,7 @@ body {
 }
 .signup .top-container {
     margin: 0 auto;
-    width: 535px;
+    width: 520px;
 }
 .signup .form-container {
     font-size: 20px;
@@ -58,14 +58,12 @@ body {
 }
 .signup .submit {
     margin: 0 auto;
-    width: 400px;
     text-align: center;
     line-height: 2px;
 }
 .signup .requirement-container {
     font-size: 16px;
     text-align: center;
-    width: 535px;
     margin: 0 auto;
     line-height: 6px;
 }
