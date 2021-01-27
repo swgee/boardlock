@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BoardWalk - Signup</title>
+    <style>
+        a {
+            font-family: Arial, serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: rgba(0,160,0,1);
+            color: white;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        a:hover {
+            opacity: 0.8;
+        }
+        body {
+            font-family: Arial, serif;
+            background: lightblue url("/static/images/boardwalk.jpg") no-repeat center center fixed;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        div {
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p style="padding-bottom: 20px; font-size: 25px">Account for username "{{uname}}" created!</p>
+    <a id="login" class="button" style="text-decoration: none">Return to Login</a>
+</div>
+    <script> document.getElementById('login').href = '{{link}}'; </script>
+</body>
+</html>

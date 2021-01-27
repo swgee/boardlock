@@ -18,6 +18,7 @@
     </div>
     <div class="img-container"><img alt="background" src="/static/images/landing-page.png"></div>
     <div class="form-container">
+        <p style="position: relative; bottom: 20px; line-height: 0; font-family: Arial, serif; font-size: 18px">{{message}}</p>
         <form action="/" method="post">
             <label for="username"><b>Username</b></label>
             <input id="username" type="text" required>
@@ -25,10 +26,10 @@
             <input id="password" type="password" required>
             <button type="submit">Login</button>
         </form>
-	<! href="http://127.0.0.1:5000/signup" class="button" style="text-decoration: none" Create New Account >
-        <a href="https://benkofman.com/signup" class="button" style="text-decoration: none">Create New Account</a>
+        <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
     </div>
 </div>
+<script> document.getElementById("signup").href = '{{link}}/signup'; </script>
 </body>
 
 </html>
