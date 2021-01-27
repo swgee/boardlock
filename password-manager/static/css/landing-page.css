@@ -16,7 +16,7 @@ input {
     box-sizing: border-box;
 }
 a, button {
-    background-color: #4CAF50;
+    background-color: rgba(0,160,0,1);
     color: white;
     border: none;
     cursor: pointer;
@@ -27,6 +27,7 @@ a, button {
     width: -webkit-fill-available;
     width: -moz-available;
     font-size: 18px;
+    font-family: Arial, serif;
 }
 a:hover, button:hover {
     opacity: 0.8;

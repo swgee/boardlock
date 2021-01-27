@@ -16,9 +16,10 @@
 <body>
 <div class="signup">
     <a href="https://benkofman.com" class="button" style="text-decoration: none; text-align: end">Home</a>
+    <div class="post-error"><p>{{error}}</p></div>
     <div class="top-container">
         <div class="form-container">
-            <form id="credentials" method="POST">
+            <form action="http://127.0.0.1:5000/signup" id="credentials" method="POST">
                 <div>
                     <label for="username">Username: </label>
                     <input id="username" type="text" name="username" oninput="validation()" required>
