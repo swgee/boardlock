@@ -1,18 +1,28 @@
-from flask import Flask, render_template, request, send_from_directory
-from authentication.create_account import store_credentials
-from config import addresses
+from flask import Flask, render_template, request, send_from_directory, redirect, session
+from authentication.create_account import store_account_data
+from authentication.login import sign_user_in
+from config import addresses, secret_key
 import os
 
 app = Flask(__name__)
 address = addresses['l']
-
+app.secret_key = secret_key
 
 @app.route('/favicon.ico')
 def return_icon():
     return send_from_directory(os.path.join(app.root_path, 'static/images'), 'secured-lock.png')
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def landing_page():
+    if request.method == 'POST':
+        username, password = request.form['username'], request.form['password']
+        query = sign_user_in(username, password)
+        if query is not None:
+            session['user-data'] = query
+            session['username'] = username
+            return redirect('/manager')
+        else:
+            return render_template('landing-page.html', error='Invalid credentials.', link=address)
     return render_template('landing-page.html', link=address)
 
 
@@ -20,11 +30,15 @@ def landing_page():
 def signup_page():
     if request.method == 'POST':  # First step should be server-side password validation/form fuzzing (TBC)
         username, password = request.form['username'], request.form['password']
-        if store_credentials(username, password) is False:
-            return render_template('signup-page.html', error='Username is unavailable.', link=address)
-        else:
+        if store_account_data(username, password) is True:
             return render_template('/signup-successful.html', uname=username, link=address)
+        else:
+            return render_template('signup-page.html', error='Username is unavailable.', link=address)
     return render_template('signup-page.html', error='', link=address)
+
+@app.route('/manager')
+def manager():
+    return render_template('/manager.html', username=session['username'], data=session['user-data'], link=address)
 
 
 if __name__ == '__main__':

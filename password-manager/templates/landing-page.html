@@ -18,12 +18,12 @@
     </div>
     <div class="img-container"><img alt="background" src="/static/images/landing-page.png"></div>
     <div class="form-container">
-        <p style="position: relative; bottom: 20px; line-height: 0; font-family: Arial, serif; font-size: 18px">{{message}}</p>
-        <form action="/" method="post">
+        <p style="position: relative; bottom: 20px; line-height: 0; font-family: Arial, serif; font-size: 18px">{{error}}</p>
+        <form action="/" method="POST">
             <label for="username"><b>Username</b></label>
-            <input id="username" type="text" required>
+            <input id="username" type="text" name="username"required>
             <label for="password"><b>Root Password</b></label>
-            <input id="password" type="password" required>
+            <input id="password" type="password" name="password" required>
             <button type="submit">Login</button>
         </form>
         <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
