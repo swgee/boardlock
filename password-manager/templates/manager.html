@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="/static/css/manager.css">
 </head>
 <body>
-Welcome {{username}}, here is your data: {{data}}
+<p>Welcome {{username}}, here is your data: {{data}}</p>
+<a id="logout" class="button" style="text-decoration: none">Logout</a>
+<script>document.getElementById('logout').href = '{{link}}/logout';</script>
 </body>
 </html>

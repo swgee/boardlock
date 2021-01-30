@@ -38,8 +38,16 @@ def signup_page():
 
 @app.route('/manager')
 def manager():
-    return render_template('/manager.html', username=session['username'], data=session['user-data'], link=address)
+    if 'username' in session.keys():
+        return render_template('/manager.html', username=session['username'], data=session['user-data'], link=address)
+    else:
+        return redirect('/')
 
+@app.route('/logout')
+def logout():
+    if 'username' in session.keys():
+        session.pop('username')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run()
