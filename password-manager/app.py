@@ -14,6 +14,8 @@ def return_icon():
 
 @app.route('/', methods=['GET', 'POST'])
 def landing_page():
+    if 'username' in session.keys():
+        return redirect('/manager')
     if request.method == 'POST':
         username, password = request.form['username'], request.form['password']
         query = sign_user_in(username, password)

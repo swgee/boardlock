@@ -1,10 +1,69 @@
+body {
+    background: url("/static/images/beach-sunset.jpg") no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+h1 {
+    font-family: Arial, serif;
+    font-size: 25px;
+    padding: 10px 20px;
+    background-color: rgba(0,160,0,1);
+    color: white;
+    width: -moz-max-content;
+    width: max-content;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+}
 a {
     font-family: Arial, serif;
     font-size: 18px;
-    display: inline-block;
+    position: absolute;
+    top: 2%;
+    right: 1%;
     padding: 10px 20px;
-    background-color: rgba(0,160,0,1);
+    background-color: rgba(0, 160, 0, 1);
     color: white;
     cursor: pointer;
     outline: none;
     border: none;
+}
+a:hover {
+    opacity: .8;
+}
+table {
+    margin: 0 auto;
+    text-align: left;
+    font-family: Arial, serif;
+    border-collapse: collapse;
+    width: 80%;
+    position: relative;
+    top: 20px;
+    table-layout: fixed;
+}
+.wide {
+    width: 10%;
+}
+.narrow {
+    width: 7%;
+}
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, .80);
+}
+tr:nth-child(odd) {
+    background-color: rgba(220, 220, 220, .80);
+}
+th {
+  padding-top: 8px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: rgba(0, 160, 0, 1);
+  color: white;
+}

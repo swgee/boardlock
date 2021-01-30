@@ -26,7 +26,7 @@ def retrieve_user_data(username, password, response):
     data_key = key_encrypt.decrypt(data_key)
     data_encrypt = Fernet(data_key)
     user_data = data_encrypt.decrypt(buffer.getvalue())
-    return repr(user_data.decode('utf-8'))
+    return user_data.decode('utf-8')
 
 def check_password(response, password):
     auth_key = response['Items'][0]['auth_key']

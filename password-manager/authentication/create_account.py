@@ -7,25 +7,24 @@ from base64 import urlsafe_b64encode
 import pandas as pd
 from io import BytesIO
 import codecs
+from datetime import datetime
 
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('boardlock-account-data')
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('boardlock-user-data')
 
-user_filler_data = {
-    'Username': ['LukeBoardWalker', 'user1977'],
-    'Password': ['Forcelover456', 'hK+:VQhj8~y:aYwq'],
-    'URL': ['www.spacebook.com', 'login.rebels.com'],
-    'Category': ['Social Media', 'Work']
-}
+user_filler_data = [
+    ['LukeBoardWalker', 'Forcelover456', 'www.spacebook.com', 'Social Media', '12/18/20 8:53 PM'],
+    ['user1977', 'hK+:VQhj8~y:aYwq', 'login.rebels.com', 'Work', '5/25/83 11:05 AM']
+]
 df = pd.DataFrame(data=user_filler_data)
 
 def create_starting_csv():
     buffer = BytesIO()
     stream_writer = codecs.getwriter('utf-8')
     wrapper_file = stream_writer(buffer)
-    wrapper_file.write(df.to_csv(sep='\t'))
+    wrapper_file.write(df.to_csv(sep='\t', index=False, header=False))
     return buffer.getvalue()
 
 def generate_auth_data(password):
