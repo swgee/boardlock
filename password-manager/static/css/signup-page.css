@@ -19,7 +19,7 @@ body {
     padding-top: 25px;
     margin: 0 auto;
     text-align: center;
-    width: 500px;
+    width: max-content;
 }
 .signup .form-container input {
     width: 300px;
