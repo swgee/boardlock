@@ -31,7 +31,7 @@ button:disabled {
     opacity: .5;
 }
 .ui {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 .top-bar div {
@@ -59,6 +59,10 @@ table {
     color: transparent;
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
+.blurry:hover {
+    color: inherit;
+    text-shadow: none;
+}
 .wide {
     width: 10%;
 }
@@ -66,21 +70,17 @@ table {
     width: 7%;
 }
 td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
+    border: 1px solid #ddd;
+    padding: 8px;
 }
 
 .unselected {
     background-color: rgba(255, 255, 255, .80);
 }
 th {
-  padding-top: 8px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: rgba(0, 160, 0, 1);
-  color: white;
-}
-tr:hover {
+    padding-top: 8px;
+    padding-bottom: 12px;
+    text-align: center;
     background-color: rgba(0, 160, 0, 1);
     color: white;
 }

@@ -30,25 +30,34 @@ for (let i = 1; i < data_table.rows.length; i++) {
 }
 
 document.querySelectorAll('#data_table tr')
-.forEach(row => row.addEventListener("click", function() {
-    if (
-        row.classList.contains('selected')) {row.classList.replace('selected', 'unselected');
-        num_selected_rows -= 1;
-    }
-    else {
-        row.classList.replace('unselected', 'selected');
-        num_selected_rows += 1;
-    }
-    if (num_selected_rows != 1) {
-        editButton.disabled = true;
-    }
-    else {
-        editButton.disabled = false;
-    }
-    if (num_selected_rows == 0) {
-        deleteButton.disabled = true;
-    }
-    else {
+    .forEach(row => row.addEventListener("click", function() {
+        if (row.classList.contains('unselected')) {
+            row.classList.replace('unselected', 'selected');
+            num_selected_rows += 1;
+        }
         deleteButton.disabled = false;
+        if (num_selected_rows == 1) {
+            editButton.disabled = false;
+        }
+        else {
+            editButton.disabled = true;
+        }
+    }));
+
+function unselect_rows() {
+    for (let i = 1; i < data_table.rows.length; i++) {
+        row = data_table.getElementsByTagName("tr")[i];
+        if (row.classList.contains('selected') == true) {
+            row.classList.replace('selected', 'unselected');
+        }
     }
-}));
+    editButton.disabled = true;
+    deleteButton.disabled = true;
+    num_selected_rows = 0;
+}
+
+document.onclick = function(e){
+    if(e.target.tagName != "TD") {
+        unselect_rows()
+    }
+}
