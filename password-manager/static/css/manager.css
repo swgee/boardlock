@@ -7,41 +7,54 @@ body {
 }
 h1 {
     font-family: Arial, serif;
-    font-size: 25px;
-    padding: 10px 20px;
-    background-color: rgba(0,160,0,1);
+    font-size: 30px;
     color: white;
-    width: -moz-max-content;
     width: max-content;
-    text-align: center;
-    margin: 0 auto;
-    border-radius: 10px;
+    padding-left: 10px;
+    text-shadow: 3px 3px #7b757c;
 }
-a {
+a, button {
     font-family: Arial, serif;
-    font-size: 18px;
-    position: absolute;
-    top: 2%;
-    right: 1%;
-    padding: 10px 20px;
+    font-size: 16px;
+    padding: 10px;
     background-color: rgba(0, 160, 0, 1);
     color: white;
     cursor: pointer;
     outline: none;
     border: none;
+    display: inline-block;
 }
-a:hover {
+a:hover, button:hover {
     opacity: .8;
+}
+.ui {
+    width: 80%;
+    margin: 0 auto;
+}
+.top-bar div {
+    display: inline-block;
+}
+.searchbar {
+    font-family: Arial, serif;
+    font-size: 16px;
+    color: white;
+    background-color: rgba(0, 160, 0, 1);
+    padding: 9px;
+    vertical-align: top;
 }
 table {
     margin: 0 auto;
     text-align: left;
     font-family: Arial, serif;
     border-collapse: collapse;
-    width: 80%;
-    position: relative;
-    top: 20px;
     table-layout: fixed;
+    position: relative;
+    top: 5px;
+    width: 100%;
+}
+.blurry {
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 .wide {
     width: 10%;

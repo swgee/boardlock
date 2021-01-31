@@ -9,23 +9,40 @@
 <p id="username">{{username}}</p>
 <p id="data">{{data}}</p>
 <h1>BoardLock Password Manager</h1>
-<a id="logout" class="button" style="text-decoration: none">Logout</a>
-<table id="data_table">
-    <colgroup>
-        <col class="wide" />
-        <col class="wide" />
-        <col class="wide" />
-        <col class="narrow" />
-        <col class="narrow" />
-    </colgroup>
-    <tr>
-        <th>Username</th>
-        <th>Password</th>
-        <th>URL</th>
-        <th>Category</th>
-        <th>Time Created</th>
-    </tr>
-</table>
+<div class="ui">
+    <div class="top-bar">
+        <div>
+            <button id="create" class="long" style="text-decoration: none">Create New Entry</button>
+            <button id="edit" style="text-decoration: none">Edit</button>
+            <button id="delete" style="text-decoration: none">Delete</button>
+        </div>
+        <div class="searchbar">
+            <label for="search">Search Database: </label>
+            <input id="search" type="search">
+        </div>
+        <div style="float: right">
+            <button id="export" class="long" style="text-decoration: none">Export Database</button>
+            <button id="change_psw" class="long" style="text-decoration: none">Change Password</button>
+            <a id="logout" class="button" style="text-decoration: none">Logout</a>
+        </div>
+    </div>
+    <table id="data_table">
+        <colgroup>
+            <col class="wide" />
+            <col class="wide" />
+            <col class="wide" />
+            <col class="narrow" />
+            <col class="narrow" />
+        </colgroup>
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>URL</th>
+            <th>Category</th>
+            <th>Time Created</th>
+        </tr>
+    </table>
+</div>
 <script>
     document.getElementById('logout').href = '{{link}}/logout';
     let username = document.getElementById('username').innerHTML; // pass variables to manager.js
