@@ -11,7 +11,6 @@ input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
@@ -21,37 +20,47 @@ a, button {
     border: none;
     cursor: pointer;
     display: inline-block;
-    margin: 4px;
-    padding: 12px;
+    margin-top: 10px;
+    padding: 12px 0 12px 0;
     text-align: center;
     width: -webkit-fill-available;
-    width: -moz-available;
+    width: 100%;
     font-size: 18px;
     font-family: Arial, serif;
 }
 a:hover, button:hover {
     opacity: 0.8;
 }
-.center{
-    width: 1100px;
-    margin: 0 auto;
-}
-img, .img-container  {
-    width: 600px;
-}
-.img-container {
-    display:inline-block;
-}
 .form-container {
-    max-width: 400px;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 35%;
     display: inline-block;
     text-align: left;
-    vertical-align: top;
-    padding-left: 25px;
-    padding-top: 40px;
 }
 .text-container {
-    line-height: 2px;
-    padding-bottom: 30px;
     padding-top: 10px;
+    text-align: center;
+    line-height: 0;
+}
+.error {
+    background-color: rgba(255, 255, 255, .8);
+    font-family: Arial, serif;
+    font-size: 18px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 0);
+    top: 3%;
+    width: max-content;
+}
+.github {
+    position: absolute;
+    text-decoration: none;
+    left: 1%;
+    top: 1%;
+    width: 10%;
+    padding: 10px 10px;
+    font-size: 16px;
 }

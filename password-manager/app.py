@@ -3,6 +3,7 @@ from create_account import store_account_data
 from login import sign_user_in
 from config import addresses, secret_key
 import os
+from update_data import edit_entry, new_entry
 
 app = Flask(__name__)
 address = addresses['l']
@@ -42,9 +43,9 @@ def signup_page():
 def manager():
     if request.method == 'POST':
         if request.form['change_type'] == 'edit':
-            print('')
+            edit_entry()
         if request.form['change_type'] == 'new':
-            print('')
+            new_entry()
     if 'username' in session.keys():
         return render_template('/manager.html', username=session['username'], data=session['user-data'], link=address)
     else:

@@ -9,25 +9,26 @@
 
 
 <body>
-
-<div class="center">
-    <div class="text-container">
-        <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
-        <p style="font-size: 20px">A secure online password storage solution.</p>
-        <p style="font-size: 15px">(Please do not store real login information, this is a personal project using personal servers.)</p>
-    </div>
-    <div class="img-container"><img alt="background" src="/static/images/landing-page.png"></div>
-    <div class="form-container">
-        <p style="position: relative; bottom: 20px; line-height: 0; font-family: Arial, serif; font-size: 18px">{{error}}</p>
-        <form action="/" method="POST">
-            <label for="username"><b>Username</b></label>
+<a class="github" href="https://github.com/swgee/boardlock">Code on GitHub</a>
+<div class="text-container">
+    <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
+    <p style="font-size: 20px">A secure online password storage solution.</p>
+    <p style="font-size: 15px; padding-top: 5px">(Please do not store real login information, this is a personal project using personal servers.)</p>
+</div>
+<div class="form-container">
+    <form action="/" method="POST">
+        <div>
+            <label for="username"><b>Username:</b></label>
             <input id="username" type="text" name="username"required>
-            <label for="password"><b>Root Password</b></label>
+        </div>
+        <div>
+            <label for="password"><b>Root Password:</b></label>
             <input id="password" type="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
-    </div>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
+    <p class="error">{{error}}</p>
 </div>
 <script> document.getElementById("signup").href = '{{link}}/signup'; </script>
 </body>
