@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, session
-from authentication.create_account import store_account_data
-from authentication.login import sign_user_in
+from create_account import store_account_data
+from login import sign_user_in
 from config import addresses, secret_key
 import os
 
@@ -38,8 +38,13 @@ def signup_page():
             return render_template('signup-page.html', error='Username is unavailable.', link=address)
     return render_template('signup-page.html', error='', link=address)
 
-@app.route('/manager')
+@app.route('/manager', methods=['GET', 'POST'])
 def manager():
+    if request.method == 'POST':
+        if request.form['change_type'] == 'edit':
+            print('')
+        if request.form['change_type'] == 'new':
+            print('')
     if 'username' in session.keys():
         return render_template('/manager.html', username=session['username'], data=session['user-data'], link=address)
     else:

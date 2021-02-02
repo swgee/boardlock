@@ -7,7 +7,7 @@ editButton.disabled = true
 deleteButton.disabled = true;
 editor_and_passgen = document.getElementById('editor_and_passgen')
 ui = document.getElementById("ui");
-form_data = document.getElementById('entry_form').elements;
+form = document.getElementById('entry_form');
 // passwordGenerator = document.getElementById('password_generator')
 
 // append data to table
@@ -29,7 +29,7 @@ data_table.innerHTML += table;
 for (let i = 1; i < data_table.rows.length; i++) {
     row = data_table.getElementsByTagName("tr")[i];
     row.classList.add('unselected');
-    cell = row.getElementsByTagName("td")[1];
+    cell = row.getElementsByTagName("td")[2];
     cell.classList.add('blurry');
 }
 
@@ -66,16 +66,46 @@ document.onclick = function(e){
     }
 }
 
-function create(entry) {
+function edit_row(row) {
     ui.classList.add('not_clickable');
     editor_and_passgen.classList.remove('hide');
+    document.getElementById('action').innerHTML = "Edit Entry";
+    cells = row.getElementsByTagName("td");
+    form.elements['change_type'].value = 'edit'
+    form.elements['title_field'].value = cells[0].innerHTML;
+    form.elements['username_field'].value = cells[1].innerHTML;
+    form.elements['password_field'].value = cells[2].innerHTML;
+    form.elements['url_field'].value = cells[3].innerHTML;
+    form.elements['category_field'].value = cells[4].innerHTML;
+}
+
+function create() {
+    ui.classList.add('not_clickable');
+    editor_and_passgen.classList.remove('hide');
+    document.getElementById('action').innerHTML = "Create New Entry"
+    form.elements['change_type'].value = 'new'
+}
+
+function edit() {
+    for (let i = 0; i < data_table.rows.length; i++) {
+        row = data_table.getElementsByTagName("tr")[i];
+        if (row.classList.contains('selected')) {;
+            edit_row(row)
+            break
+        }
+    }
 }
 
 function close_editor() {
+    form.reset()
     editor_and_passgen.classList.add('hide');
     ui.classList.remove('not_clickable');
 }
 
 function fill_password_field() {
-    form_data['password_field'].value = document.getElementById("output").value;
+    form.elements['password_field'].value = document.getElementById("output").value;
+}
+
+function save_data() {
+    console.log('hi')
 }

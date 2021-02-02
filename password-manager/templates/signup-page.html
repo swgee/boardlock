@@ -25,7 +25,7 @@
                 </div>
                 <div>
                     <label for="psw">Root Password: </label>
-                    <input id="psw" type="password" name="password" oninput="validation()" required>
+                    <input id="psw" type="text" name="password" oninput="validation()" required>
                 </div>
             </form>
             <div>
@@ -51,8 +51,12 @@
     <div id="password-generator" class="random-container"></div>
     <script src="/static/js/signup-page.js"></script>
     <script>
+        $('input').attr('autocomplete', 'new-password');
+    </script>
+    <script>
         document.getElementById("credentials").action ="{{link}}/signup";
         document.getElementById('home').href = "{{link}}";
+        document.getElementById('psw').type = 'password';
     </script>
 </div>
 </body>

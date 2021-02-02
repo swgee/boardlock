@@ -15,8 +15,7 @@ s3 = boto3.resource('s3')
 bucket = s3.Bucket('boardlock-user-data')
 
 user_filler_data = [
-    ['LukeBoardWalker', 'Forcelover456', 'www.spacebook.com', 'Social Media', '12/18/20 8:53 PM'],
-    ['user1977', 'hK+:VQhj8~y:aYwq', 'login.rebels.com', 'Work', '5/25/83 11:05 AM']
+    ['SpaceBook', 'LukeBoardWalker', 'Usetheforce456', 'www.spacebook.com', 'Social Media', '05/04/1977 03:27'],
 ]
 df = pd.DataFrame(data=user_filler_data)
 
