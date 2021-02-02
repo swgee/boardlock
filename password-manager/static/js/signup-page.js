@@ -1,6 +1,3 @@
-//const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//const numbers = "0123456789";
-//const specials = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // from owasp.org/www-community/password-special-characters
 let submitButton = document.getElementById('submitButton');
 submitButton.disabled = true;
 let form = document.getElementById('credentials');

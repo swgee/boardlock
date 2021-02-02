@@ -5,6 +5,10 @@ editButton = document.getElementById("edit");
 deleteButton = document.getElementById('delete');
 editButton.disabled = true
 deleteButton.disabled = true;
+editor_and_passgen = document.getElementById('editor_and_passgen')
+ui = document.getElementById("ui");
+form_data = document.getElementById('entry_form').elements;
+// passwordGenerator = document.getElementById('password_generator')
 
 // append data to table
 let rows = data.split('\n');
@@ -58,6 +62,20 @@ function unselect_rows() {
 
 document.onclick = function(e){
     if(e.target.tagName != "TD") {
-        unselect_rows()
+        unselect_rows();
     }
+}
+
+function create(entry) {
+    ui.classList.add('not_clickable');
+    editor_and_passgen.classList.remove('hide');
+}
+
+function close_editor() {
+    editor_and_passgen.classList.add('hide');
+    ui.classList.remove('not_clickable');
+}
+
+function fill_password_field() {
+    form_data['password_field'].value = document.getElementById("output").value;
 }

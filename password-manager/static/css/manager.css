@@ -63,6 +63,7 @@ table {
     color: inherit;
     text-shadow: none;
 }
+
 .wide {
     width: 10%;
 }
@@ -87,4 +88,75 @@ th {
 .selected {
     background-color: rgba(0, 160, 0, 1);
     color: white;
+}
+.hide {
+    display: none;
+}
+#editor_and_passgen {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 60%;
+    background-color: rgba(40, 40, 40, .8);
+    border: rgb(0, 160, 0);
+    border-width: 5px;
+    border-style: outset;
+}
+#password-generator {
+    width: 55%;
+    position: absolute;
+    top: 10%;
+    right: 0;
+    color: white;
+    padding-top: 3%;
+}
+#password-generator label {
+    background-color: rgba(0, 0, 0, 0);
+}
+#password-generator button{
+    background: rgb(0, 160, 0);
+}
+#password-generator #output {
+    width: 70%;
+}
+.not_clickable {
+    pointer-events: none;
+}
+#editor_and_passgen .buttons {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+#editor_and_passgen button {
+    display: inline-block;
+    font-size: 18px;
+}
+#editor_and_passgen label{
+    color: white;
+    font-size: 18px;
+    font-family: Arial, serif;
+}
+#editor_and_passgen form {
+    width: 40%;
+    height: 80%;
+    padding-top: 5%;
+    text-align: right;
+}
+#editor_and_passgen input {
+    width: 70%;
+}
+#editor_and_passgen form .field {
+    padding-top: 5%;
+}
+#editor_and_passgen .show {
+    display: inline-block;
+    padding: 1px 1px 1px 1px;
+    font-family: Arial, serif;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    margin-left: 3px;
 }

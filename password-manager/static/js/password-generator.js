@@ -86,11 +86,11 @@ function random_string() {
 function show_password(field, button) {
     if (field.type === "password") {
         field.type = "text";
-        button.classList.add("active");
+        button.innerHTML = "Hide";
     }
     else {
         field.type = "password";
-        button.classList.remove("active");
+        button.innerHTML = "Show";
     }
 }
 
