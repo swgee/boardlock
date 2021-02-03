@@ -71,7 +71,7 @@ function edit_row(row) {
     editor_and_passgen.classList.remove('hide');
     document.getElementById('action').innerHTML = "Edit Entry";
     cells = row.getElementsByTagName("td");
-    form.elements['change_type'].value = 'edit'
+    form.elements['action_type'].value = 'edit'
     form.elements['title_field'].value = cells[0].innerHTML;
     form.elements['username_field'].value = cells[1].innerHTML;
     form.elements['password_field'].value = cells[2].innerHTML;
@@ -83,7 +83,7 @@ function create() {
     ui.classList.add('not_clickable');
     editor_and_passgen.classList.remove('hide');
     document.getElementById('action').innerHTML = "Create New Entry"
-    form.elements['change_type'].value = 'new'
+    form.elements['action_type'].value = 'new'
 }
 
 function edit() {

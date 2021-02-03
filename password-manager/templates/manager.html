@@ -40,7 +40,7 @@
             <col class="wide" />
             <col class="wide" />
             <col class="narrow" />
-            <col class="narrow" />
+            <col class="medium" />
         </colgroup>
         <tr>
             <th>Title</th>
@@ -48,34 +48,34 @@
             <th>Password</th>
             <th>URL</th>
             <th>Category</th>
-            <th>Time Created</th>
+            <th>Time Modified</th>
         </tr>
     </table>
 </div>
 <div id="editor_and_passgen" class="hide">
     <h1 id="action"></h1>
     <form id="entry_form" method="POST">
-        <input id="change_type" style="display: none" name="change_type" value="">
+        <input id="change_type" style="display: none" name="change_type">
         <div class="field">
             <label for="title_field">Title:</label>
-            <input id="title_field" type="text">
+            <input id="title_field" type="text" name="title">
         </div>
         <div class="field">
             <label for="username_field">Username:</label>
-            <input id="username_field" type="text" required>
+            <input id="username_field" type="text" name="username" required>
         </div>
         <div class="field">
             <label for="password_field">Password:</label>
-            <input id="password_field" type="text">
+            <input id="password_field" type="text" name="password">
             <button class="show" type="button" onclick="show_password(document.getElementById('password_field'), this)">Show</button>
         </div>
         <div class="field">
             <label for="url_field">URL:</label>
-            <input id="url_field" type="text">
+            <input id="url_field" type="text" name="url">
         </div>
         <div class="field" style="text-align: center">
             <label for="category_field">Category:</label>
-            <select id="category_field">
+            <select id="category_field" name="category">
                 <option selected="selected"></option>
                 <option>Work</option>
                 <option>Email</option>

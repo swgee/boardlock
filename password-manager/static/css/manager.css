@@ -68,8 +68,11 @@ table {
 .wide {
     width: 10%;
 }
+.medium {
+    width: 8%
+}
 .narrow {
-    width: 7%;
+    width: 6%;
 }
 td, th {
     border: 1px solid #ddd;

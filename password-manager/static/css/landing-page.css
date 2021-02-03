@@ -46,14 +46,14 @@ a:hover, button:hover {
     line-height: 0;
 }
 .error {
-    background-color: rgba(255, 255, 255, .8);
     font-family: Arial, serif;
     font-size: 18px;
     left: 50%;
-    position: relative;
+    position: absolute;
     transform: translate(-50%, 0);
-    top: 3%;
+    top: -10%;
     width: max-content;
+
 }
 .github {
     position: absolute;

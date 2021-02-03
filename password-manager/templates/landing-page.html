@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="/static/css/landing-page.css">
 </head>
 
-
 <body>
 <a class="github" href="https://github.com/swgee/boardlock">Code on GitHub</a>
 <div class="text-container">
@@ -16,6 +15,9 @@
     <p style="font-size: 15px; padding-top: 5px">(Please do not store real login information, this is a personal project using personal servers.)</p>
 </div>
 <div class="form-container">
+    <div class="error">
+        <p>{{error}}</p>
+    </div>
     <form action="/" method="POST">
         <div>
             <label for="username"><b>Username:</b></label>
@@ -28,7 +30,6 @@
         <button type="submit">Login</button>
     </form>
     <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
-    <p class="error">{{error}}</p>
 </div>
 <script> document.getElementById("signup").href = '{{link}}/signup'; </script>
 </body>
