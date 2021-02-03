@@ -56,6 +56,7 @@ def store_account_data(username, password):
                 'salt': auth[1],
                 'data_key': auth[2],
                 'time_created': datetime.now().strftime("%m/%d/%Y %H:%M:%S"),
+                'token_hash': ''
             }
         )
         # send encrypted user data file to S3
