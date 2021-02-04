@@ -11,14 +11,14 @@ dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('boardlock-account-data')
 s3 = boto3.client('s3')
 
-def retrieve_user_data(username, password):
+def retrieve_data(username, kek):
+    # retrieve data_key
     account = query_table(username)
-    data_key = account['data_key'].value.decode('utf-8').encode('utf-8')
-    salt = account['salt'].value.decode('utf-8').encode('utf-8')
+    data_key = account['data_key'].value
+    # retrieve data
     buffer = BytesIO()
     s3.download_fileobj('boardlock-user-data', username, buffer)
-    password = bytes(password, encoding='utf-8')
-    kek = bcrypt.kdf(password, salt, 32, 100)
+    # decrypt data with kek, return to application
     key_encrypt = Fernet(urlsafe_b64encode(kek))
     data_key = key_encrypt.decrypt(data_key)
     data_encrypt = Fernet(data_key)
@@ -27,9 +27,9 @@ def retrieve_user_data(username, password):
 
 def check_password(account, password):
     auth_key = account['auth_key']
-    auth_key = auth_key.value.decode('utf-8').encode('utf-8')  # https://github.com/boto/boto3/issues/846
+    auth_key = auth_key.value
     salt = account['salt']
-    salt = salt.value.decode('utf-8').encode('utf-8')
+    salt = salt.value
     password = bytes(password, encoding='utf-8')
     if bcrypt.hashpw(password, salt) == auth_key:
         return True
@@ -49,10 +49,10 @@ def create_token(username, password):
                 'token_hash': token_hash
             }
         )
-        salt = account['salt'].value.decode('utf-8').encode('utf-8')
+        salt = account['salt'].value
         password = bytes(password, encoding='utf-8')
         kek = bcrypt.kdf(password, salt, 32, 100)
-        return token, kek
+        return [token, kek]
 
 def check_token(username, token):
     account = query_table(username)

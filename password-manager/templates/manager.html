@@ -48,34 +48,34 @@
             <th>Password</th>
             <th>URL</th>
             <th>Category</th>
-            <th>Time Modified</th>
+            <th>Time Created</th>
         </tr>
     </table>
 </div>
 <div id="editor_and_passgen" class="hide">
     <h1 id="action"></h1>
     <form id="entry_form" method="POST">
-        <input id="change_type" style="display: none" name="change_type">
+        <input id="change_type" style="display: none" name="change_type" value="">
         <div class="field">
             <label for="title_field">Title:</label>
-            <input id="title_field" type="text" name="title">
+            <input id="title_field" type="text">
         </div>
         <div class="field">
             <label for="username_field">Username:</label>
-            <input id="username_field" type="text" name="username" required>
+            <input id="username_field" type="text" required>
         </div>
         <div class="field">
             <label for="password_field">Password:</label>
-            <input id="password_field" type="text" name="password">
+            <input id="password_field" type="text">
             <button class="show" type="button" onclick="show_password(document.getElementById('password_field'), this)">Show</button>
         </div>
         <div class="field">
             <label for="url_field">URL:</label>
-            <input id="url_field" type="text" name="url">
+            <input id="url_field" type="text">
         </div>
         <div class="field" style="text-align: center">
             <label for="category_field">Category:</label>
-            <select id="category_field" name="category">
+            <select id="category_field">
                 <option selected="selected"></option>
                 <option>Work</option>
                 <option>Email</option>

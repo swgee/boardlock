@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, session
 from create_account import store_account_data
-from authentication import create_token, check_token, delete_token
+from authentication import create_token, check_token, delete_token, retrieve_data
 from config import addresses, secret_key
 import os
 from update_data import edit_entry, new_entry
@@ -21,11 +21,11 @@ def landing_page():
         return redirect('/manager')
     if request.method == 'POST':
         username, password = request.form['username'], request.form['password']
-        token, kek = create_token(username, password)  # returns None if wrong login
-        if token is not None:
+        auth_data = create_token(username, password)  # returns None if wrong login
+        if auth_data is not None:
             session['username'] = username
-            session['token'] = token
-            session['kek'] = kek
+            session['token'] = auth_data[0]
+            session['kek'] = auth_data[1]
             return redirect('/manager')
         else:
             return render_template('landing-page.html', error='Invalid credentials.', link=address)
@@ -49,7 +49,7 @@ def manager():
                 data = request.form['data']
                 return render_template('/manager.html', username=session['username'], data=encrypt(data), link=address)
             else:
-                return render_template('/manager.html', username=session['username'], data='', link=address)
+                return render_template('/manager.html', username=session['username'], data=retrieve_data(session['username'], session['kek']), link=address)
         else:
             session.pop('username'), session.pop('token'), session.pop('kek')
             return redirect('/')
