@@ -1,7 +1,7 @@
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
 const numbers = "0123456789";
-const special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"; // from owasp.org/www-community/password-special-characters
+const special = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 let uppercaseBool = false;
 let lowercaseBool = false;
 let numbersBool = false;

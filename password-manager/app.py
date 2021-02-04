@@ -1,15 +1,17 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, session
 from create_account import store_account_data
-from authentication import create_token, check_token, delete_token, retrieve_data
+from authentication import create_token, check_token, delete_token
 from config import addresses, secret_key
 import os
-from update_data import edit_entry, new_entry
+from encryption import update_data, retrieve_data
+
 
 app = Flask(__name__)
 
 address = addresses['l']
 app.secret_key = secret_key
 app.config['SESSION_COOKIE_SECURE'] = True
+# httpOnly set to True by default
 
 @app.route('/favicon.ico')
 def return_icon():
@@ -47,8 +49,7 @@ def manager():
         if check_token(session['username'], session['token']):
             if request.method == 'POST':
                 data = request.form['data']
-                print(data)
-                return render_template('/manager.html', username=session['username'], data='Received\n', link=address)
+                return render_template('/manager.html', username=session['username'], data=update_data(data, session['username'], session['kek']), link=address)
             else:
                 return render_template('/manager.html', username=session['username'], data=retrieve_data(session['username'], session['kek']), link=address)
         else:

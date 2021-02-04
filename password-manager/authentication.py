@@ -7,23 +7,12 @@ from base64 import urlsafe_b64encode
 import secrets
 from hashlib import sha256
 
+
 dynamodb = boto3.resource('dynamodb')
 table = dynamodb.Table('boardlock-account-data')
 s3 = boto3.client('s3')
-
-def retrieve_data(username, kek):
-    # retrieve data_key
-    account = query_table(username)
-    data_key = account['data_key'].value
-    # retrieve data
-    buffer = BytesIO()
-    s3.download_fileobj('boardlock-user-data', username, buffer)
-    # decrypt data with kek, return to application
-    key_encrypt = Fernet(urlsafe_b64encode(kek))
-    data_key = key_encrypt.decrypt(data_key)
-    data_encrypt = Fernet(data_key)
-    user_data = data_encrypt.decrypt(buffer.getvalue())
-    return user_data.decode('utf-8')
+s3r = boto3.resource('s3')
+bucket = s3r.Bucket('boardlock-user-data')
 
 def check_password(account, password):
     auth_key = account['auth_key']

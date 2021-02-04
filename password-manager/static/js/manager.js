@@ -11,15 +11,15 @@ form = document.getElementById('entry_form');
 let d = new Date()
 document.getElementById('username_required').style.display = 'none'
 
+
 // append data to table
-let rows = data.split('\n');
-rows.pop(rows.length - 1);
+let entries = data.split('|||');
 let table = "";
-for (let i = 0; i < rows.length; i++) {
-    rows[i] = rows[i].split('\t');
+for (let i = 0; i < entries.length-1; i++) {
+    entries[i] = entries[i].split('\t');
     table += "<tr>";
-    for (let x = 0; x < rows[i].length; x++) {
-        table += "<td>" + rows[i][x] + "</td>";
+    for (let x = 0; x < entries[i].length; x++) {
+        table += "<td>" + entries[i][x] + "</td>";
     }
     table += "</tr>";
 }
@@ -162,15 +162,18 @@ function get_time() {
 }
 
 function compile_table() {
-    data_string = ''
+    let data_string = ''
     rows = data_table.getElementsByTagName('tr')
     for (let r = 1; r < rows.length; r++) {
         cells = rows[r].getElementsByTagName("td")
         for (let c = 0; c < cells.length; c++) {
             cell = cells[c]
-            data_string = data_string.concat(cell.innerHTML + '\t')
+            data_string += cell.innerHTML
+            if (c !== (cells.length - 1)) {
+                data_string = data_string.concat('\t')
+            }
         }
-        data_string = data_string.concat('\n')
+        data_string = data_string.concat('|||')
     }
     return data_string
 }
@@ -179,4 +182,20 @@ function post_data() {
     post_form = document.getElementById('post_form')
     post_form.elements['table_data'].value = compile_table()
     post_form.submit()
+}
+
+function delete_rows() {
+
+}
+
+function change_password() {
+
+}
+
+function search() {
+
+}
+
+function export_database() {
+
 }
