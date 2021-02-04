@@ -47,7 +47,8 @@ def manager():
         if check_token(session['username'], session['token']):
             if request.method == 'POST':
                 data = request.form['data']
-                return render_template('/manager.html', username=session['username'], data=encrypt(data), link=address)
+                print(data)
+                return render_template('/manager.html', username=session['username'], data='Received\n', link=address)
             else:
                 return render_template('/manager.html', username=session['username'], data=retrieve_data(session['username'], session['kek']), link=address)
         else:

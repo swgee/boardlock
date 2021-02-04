@@ -35,12 +35,12 @@
     </div>
     <table id="data_table">
         <colgroup>
-            <col class="narrow" />
-            <col class="wide" />
-            <col class="wide" />
-            <col class="wide" />
-            <col class="narrow" />
             <col class="medium" />
+            <col class="wide" />
+            <col class="wide" />
+            <col class="wide" />
+            <col class="narrow" />
+            <col class="narrow" />
         </colgroup>
         <tr>
             <th>Title</th>
@@ -54,7 +54,7 @@
 </div>
 <div id="editor_and_passgen" class="hide">
     <h1 id="action"></h1>
-    <form id="entry_form" method="POST">
+    <form id="entry_form">
         <input id="change_type" style="display: none" name="change_type" value="">
         <div class="field">
             <label for="title_field">Title:</label>
@@ -62,7 +62,7 @@
         </div>
         <div class="field">
             <label for="username_field">Username:</label>
-            <input id="username_field" type="text" required>
+            <input id="username_field" type="text">
         </div>
         <div class="field">
             <label for="password_field">Password:</label>
@@ -89,13 +89,15 @@
             </select>
         </div>
     </form>
+    <p id="username_required">Username required.</p>
     <div class="buttons">
-        <button id="cancel" onclick="close_editor()">Cancel</button>
+        <button id="cancel" onclick="cancel()">Cancel</button>
         <button style="background-color: transparent"></button>
-        <button id="save" type="submit" form="entry_form" onsubmit="save_data()" style="padding: 10px 18px">Save</button>
+        <button id="save" onclick="save_data()" style="padding: 10px 18px">Save</button>
     </div>
     <div id="password-generator"></div>
 </div>
+<form id="post_form" action="/manager" method="post"><input id="table_data" style="display: none" name="data" value=""></form>
 </body>
 <script>
     $('input').attr('autocomplete', 'new-password');

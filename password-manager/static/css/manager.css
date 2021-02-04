@@ -172,3 +172,12 @@ th {
     transform: translate(-50%, 0);
     top: 5%;
 }
+#username_required {
+    font-family: Arial, serif;
+    position: absolute;
+    color: white;
+    font-size: 18px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    bottom: 15%;
+}

@@ -8,7 +8,8 @@ deleteButton.disabled = true;
 editor_and_passgen = document.getElementById('editor_and_passgen')
 ui = document.getElementById("ui");
 form = document.getElementById('entry_form');
-// passwordGenerator = document.getElementById('password_generator')
+let d = new Date()
+document.getElementById('username_required').style.display = 'none'
 
 // append data to table
 let rows = data.split('\n');
@@ -96,10 +97,14 @@ function edit() {
     }
 }
 
-function close_editor() {
-    form.reset()
-    editor_and_passgen.classList.add('hide');
-    ui.classList.remove('not_clickable');
+function cancel() {
+    if (form.elements['username_field'].value == '' && form.elements['change_type'].value == 'edit') {}
+    else {
+        form.reset()
+        editor_and_passgen.classList.add('hide');
+        ui.classList.remove('not_clickable');
+        document.getElementById('username_required').style.display = 'none'
+    }
 }
 
 function fill_password_field() {
@@ -107,5 +112,71 @@ function fill_password_field() {
 }
 
 function save_data() {
-    console.log('hi')
+    if (form.elements['username_field'].value != '') {
+        form_elements = [form.elements[1].value, form.elements[2].value, form.elements[3].value, form.elements[5].value, form.elements[6].value]
+        if (form.elements['change_type'].value == 'new') {
+            new_row = "<tr>";
+            for (let i = 0; i < form_elements.length; i++) {
+                new_row += "<td>" + form_elements[i] + "</td>"
+            }
+            new_row += "<td>" + get_time() + '</td></tr>';
+            data_table.innerHTML += new_row;
+            post_data()
+        }
+        if (form.elements['change_type'].value == 'edit') {
+            changed = false;
+            for (let i = 0; i < form_elements.length; i++) {
+                if (cells[i].innerHTML != form_elements[i]) {
+                    changed = true;
+                    break;
+                }
+            }
+            if (changed == true) {
+                for (let i = 0; i < form_elements.length; i++) {
+                    cells[i].innerHTML = form_elements[i]
+                }
+                post_data()
+            }
+        }
+    }
+    else {
+        document.getElementById('username_required').style.display = ''
+    }
+}
+
+function get_time() {
+    min = ''
+    hour = ''
+    if (d.getMinutes() < 10) {
+        min = '0' + d.getMinutes()
+    } else {
+        min = d.getMinutes()
+    }
+    if (d.getHours() < 10) {
+        hour = '0' + d.getHours()
+    }
+    else {
+        hour = d.getHours()
+    }
+    return (d.getMonth() + 1) + '/' + d.getDay() + '/' + d.getFullYear() + ' ' + hour + ':' + min
+}
+
+function compile_table() {
+    data_string = ''
+    rows = data_table.getElementsByTagName('tr')
+    for (let r = 1; r < rows.length; r++) {
+        cells = rows[r].getElementsByTagName("td")
+        for (let c = 0; c < cells.length; c++) {
+            cell = cells[c]
+            data_string = data_string.concat(cell.innerHTML + '\t')
+        }
+        data_string = data_string.concat('\n')
+    }
+    return data_string
+}
+
+function post_data() {
+    post_form = document.getElementById('post_form')
+    post_form.elements['table_data'].value = compile_table()
+    post_form.submit()
 }
