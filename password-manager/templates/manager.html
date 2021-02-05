@@ -21,7 +21,7 @@
         <div>
             <button id="create" onclick="create()">Create New Entry</button>
             <button id="edit" onclick="edit()">Edit</button>
-            <button id="delete">Delete</button>
+            <button id="delete" onclick="open_delete()">Delete</button>
         </div>
         <div class="searchbar">
             <label for="search">Search Database: </label>
@@ -97,6 +97,16 @@
     </div>
     <div id="password-generator"></div>
 </div>
+<div id="layer">
+    <div id="delete_prompt" style="display: none">
+        <p>Are you sure?</p>
+        <p>This action cannot be undone.</p>
+        <button onclick="close_delete()">Cancel</button>
+        <button style="background-color: transparent"></button>
+        <button onclick="delete_rows()">Delete</button>
+    </div>
+</div>
+<div id="extender" class="extender"></div>
 <form id="post_form" action="/manager" method="post"><input id="table_data" style="display: none" name="data" value=""></form>
 </body>
 <script>

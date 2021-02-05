@@ -27,7 +27,6 @@ def retrieve_data(username, kek):
     data_key = key_encrypt.decrypt(data_key)
     data_encrypt = Fernet(data_key)
     user_data = data_encrypt.decrypt(buffer.getvalue())
-    print(user_data.decode('utf-8'))
     return user_data.decode('utf-8')
 
 def update_data(data, username, kek):

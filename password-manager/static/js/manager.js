@@ -13,7 +13,7 @@ document.getElementById('username_required').style.display = 'none'
 
 
 // append data to table
-let entries = data.split('|||');
+let entries = data.split('|||||');
 let table = "";
 for (let i = 0; i < entries.length-1; i++) {
     entries[i] = entries[i].split('\t');
@@ -62,7 +62,7 @@ function unselect_rows() {
 }
 
 document.onclick = function(e){
-    if(e.target.tagName != "TD") {
+    if(e.target == document.body || e.target == document.getElementById('extender')) {
         unselect_rows();
     }
 }
@@ -72,6 +72,7 @@ function edit_row(row) {
     editor_and_passgen.classList.remove('hide');
     document.getElementById('action').innerHTML = "Edit Entry";
     cells = row.getElementsByTagName("td");
+    document.getElementById('extender').classList.remove('extender')
     form.elements['change_type'].value = 'edit'
     form.elements['title_field'].value = cells[0].innerHTML;
     form.elements['username_field'].value = cells[1].innerHTML;
@@ -85,6 +86,7 @@ function create() {
     editor_and_passgen.classList.remove('hide');
     document.getElementById('action').innerHTML = "Create New Entry"
     form.elements['change_type'].value = 'new'
+    document.getElementById('extender').classList.remove('extender')
 }
 
 function edit() {
@@ -104,6 +106,7 @@ function cancel() {
         editor_and_passgen.classList.add('hide');
         ui.classList.remove('not_clickable');
         document.getElementById('username_required').style.display = 'none'
+        document.getElementById('extender').classList.add('extender')
     }
 }
 
@@ -173,7 +176,7 @@ function compile_table() {
                 data_string = data_string.concat('\t')
             }
         }
-        data_string = data_string.concat('|||')
+        data_string = data_string.concat('|||||')
     }
     return data_string
 }
@@ -183,9 +186,27 @@ function post_data() {
     post_form.elements['table_data'].value = compile_table()
     post_form.submit()
 }
+function open_delete() {
+    document.getElementById('delete_prompt').style.display = '';
+    document.getElementById('layer').classList.add('overlay');
+}
+function close_delete() {
+    document.getElementById('delete_prompt').style.display = 'none';
+    document.getElementById('layer').classList.remove('overlay');
+}
 
 function delete_rows() {
-
+    to_delete = []
+    rows = data_table.getElementsByTagName('tr')
+    for (let i = 0; i < rows.length; i++) {
+        if (rows[i].classList.contains('selected')) {
+            to_delete += i
+        }
+    }
+    for (let i = to_delete.length-1; i >= 0; i--) {
+        data_table.deleteRow(to_delete[i])
+    }
+    post_data()
 }
 
 function change_password() {
