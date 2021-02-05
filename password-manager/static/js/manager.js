@@ -11,27 +11,28 @@ form = document.getElementById('entry_form');
 let d = new Date()
 document.getElementById('username_required').style.display = 'none'
 
-
-// append data to table
 let entries = data.split('|||||');
-let table = "";
-for (let i = 0; i < entries.length-1; i++) {
-    entries[i] = entries[i].split('\t');
-    table += "<tr>";
-    for (let x = 0; x < entries[i].length; x++) {
-        table += "<td>" + entries[i][x] + "</td>";
+if (data.length > 0) {
+    // append data to table
+    let table = "";
+    for (let i = 0; i < entries.length; i++) {
+        entries[i] = entries[i].split('\t');
+        table += "<tr>"
+        for (let x = 0; x < entries[i].length; x++) {
+            table += "<td>" + entries[i][x] + "</td>";
+        }
+        table += "</tr>"
     }
-    table += "</tr>";
-}
-data_table = document.getElementById("data_table");
-data_table.innerHTML += table;
+    data_table = document.getElementById("data_table");
+    data_table.innerHTML += table;
 
-// blurrify password column, add background colors
-for (let i = 1; i < data_table.rows.length; i++) {
-    row = data_table.getElementsByTagName("tr")[i];
-    row.classList.add('unselected');
-    cell = row.getElementsByTagName("td")[2];
-    cell.classList.add('blurry');
+    // blurrify password column, add background colors
+    for (let i = 1; i < data_table.rows.length; i++) {
+        row = data_table.getElementsByTagName("tr")[i];
+        row.classList.add('unselected');
+        cell = row.getElementsByTagName("td")[2];
+        cell.classList.add('blurry');
+    }
 }
 
 document.querySelectorAll('#data_table tr')
@@ -166,17 +167,19 @@ function get_time() {
 
 function compile_table() {
     let data_string = ''
-    rows = data_table.getElementsByTagName('tr')
+    rows = data_table.getElementsByTagName("tr")
     for (let r = 1; r < rows.length; r++) {
         cells = rows[r].getElementsByTagName("td")
+        if (r !== 1) {
+            data_string += '|||||'
+        }
         for (let c = 0; c < cells.length; c++) {
             cell = cells[c]
             data_string += cell.innerHTML
             if (c !== (cells.length - 1)) {
-                data_string = data_string.concat('\t')
+                data_string += '\t'
             }
         }
-        data_string = data_string.concat('|||||')
     }
     return data_string
 }

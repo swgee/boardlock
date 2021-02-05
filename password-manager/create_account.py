@@ -4,7 +4,6 @@ from datetime import datetime
 import bcrypt
 from cryptography.fernet import Fernet
 from base64 import urlsafe_b64encode
-import pandas as pd
 from io import BytesIO
 import codecs
 from datetime import datetime
@@ -14,16 +13,13 @@ table = dynamodb.Table('boardlock-account-data')
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('boardlock-user-data')
 
-user_filler_data = [
-    ['SpaceBook', 'LukeBoardWalker', 'Usetheforce456', 'www.spacebook.com', 'Social Media', '5/4/1977 03:27|||||'],
-]
-df = pd.DataFrame(data=user_filler_data)
+filler = 'SpaceBook\tLukeBoardWalker\tUsetheforce456\twww.spacebook.com\tSocial Media\t5/4/1977 03:27'
 
 def create_starting_csv():
     buffer = BytesIO()
     stream_writer = codecs.getwriter('utf-8')
     wrapper_file = stream_writer(buffer)
-    wrapper_file.write(df.to_csv(sep='\t', index=False, header=False))
+    wrapper_file.write(filler)
     return buffer.getvalue()
 
 def generate_auth_data(password):

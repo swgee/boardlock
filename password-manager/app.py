@@ -11,7 +11,7 @@ app = Flask(__name__)
 address = addresses['l']
 app.secret_key = secret_key
 app.config['SESSION_COOKIE_SECURE'] = True
-# httpOnly set to True by default
+# Flask session httpOnly set to True by default
 
 @app.route('/favicon.ico')
 def return_icon():
@@ -64,6 +64,8 @@ def logout():
         if check_token(session['username'], session['token']):
             delete_token(session['username'])
             session.pop('username'), session.pop('token'), session.pop('kek')
+            return redirect('/')
+        else:
             return redirect('/')
     else:
         return redirect('/')
