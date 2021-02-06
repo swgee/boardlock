@@ -173,13 +173,13 @@ function compile_table() {
         if (r !== 1) {
             data_string += '|||||'
         }
-        for (let c = 0; c < cells.length; c++) {
+        for (let c = 0; c < cells.length-1; c++) {
             cell = cells[c]
             data_string += cell.innerHTML
-            if (c !== (cells.length - 1)) {
-                data_string += '\t'
-            }
+            data_string += '\t'
         }
+        cell = cells[cells.length-1]
+        data_string += cell.innerHTML
     }
     return data_string
 }
