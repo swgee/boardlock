@@ -26,6 +26,7 @@ The application is online and functional. Certain features such as search and ex
 * User data encryption key is encrypted with Key-Encryption-Key (KEK)
 * KEK generated from root password and salt using PBKDF2
 * User data encrypted with data encryption key
+
 ![DynamoDB Database - all data is encrypted/hashed/unknown to me](https://github.com/swgee/boardlock/blob/master/password-manager/static/images/dynamodb.PNG)
 
 All encryption/decryption occurs on the server, and no sensitive data remains in memory as it is all passed as function parameters. In order to bypass requiring entering the user's root password for any change/request, the KEK must be stored in a Flask session cookie. 
@@ -45,7 +46,7 @@ Plaintext data in transit:
 * HSTS enabled for boardlock subdomain to prevent SSL stripping. 
 * Secure = True Flask session cookie to prevent cookie being sent over HTTP
 
-# Lessons Learned
+## Lessons Learned
 * Understand the software before writing the code - used the Flask session cookie to store the root password without understanding session hijacking and falsely believing the cookie was encrypted, not signed.
 * Test on production just as much as locally - different environments will render different results
 
