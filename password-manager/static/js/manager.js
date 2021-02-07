@@ -10,6 +10,7 @@ ui = document.getElementById("ui");
 form = document.getElementById('entry_form');
 let d = new Date()
 document.getElementById('username_required').style.display = 'none'
+exportButton = document.getElementById('export')
 
 let entries = data.split('|||||');
 if (data.length > 0) {
@@ -37,11 +38,13 @@ if (data.length > 0) {
 
 document.querySelectorAll('#data_table tr')
     .forEach(row => row.addEventListener("click", function() {
-        if (row.classList.contains('unselected')) {
+        if (row.classList.contains('unselected') && row.getElementsByTagName('td').length > 0) {
             row.classList.replace('unselected', 'selected');
             num_selected_rows += 1;
         }
-        deleteButton.disabled = false;
+        if (num_selected_rows >= 1) {
+            deleteButton.disabled = false;
+        }
         if (num_selected_rows == 1) {
             editButton.disabled = false;
         }
@@ -221,5 +224,12 @@ function search() {
 }
 
 function export_database() {
-
+    data = compile_table()
+    data = data.replaceAll('|||||', '\n')
+    data = data.replaceAll('\t',',')
+    let csv = "data:text/csv;charset=utf-8," + data
+    let encodedUri = encodeURI(csv);
+    exportButton.setAttribute('href', encodedUri)
+    exportButton.setAttribute('download', username + '.csv')
+    exportButton.click()
 }
