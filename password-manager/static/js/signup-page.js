@@ -10,7 +10,7 @@ lengthmsg.classList.add('incomplete'); specialmsg.classList.add('incomplete'); n
 messages = [specialmsg,lengthmsg,capitalmsg,numbermsg,matchmsg]
 let pswfield = document.getElementById('psw');
 let confirmpswfield = document.getElementById('confirm-psw');
-let usernamefield = document.getElementById('old');
+let usernamefield = document.getElementById('username');
 let formfields = [pswfield, confirmpswfield, usernamefield]
 
 for (let i = 0; i < formfields.length; i++) {
