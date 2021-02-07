@@ -51,7 +51,7 @@ def data_to_bytes(data):
 
 def query_table(username):
     response = table.query(KeyConditionExpression=Key('username').eq(username))
-    if 'username' in response['Items'][0].keys():
+    if len(response['Items']) > 0:
         return response['Items'][0]
 
 def change_password(username, kek, old_password, new_password):

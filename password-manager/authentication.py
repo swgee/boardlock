@@ -66,5 +66,5 @@ def delete_token(username):
 
 def query_table(username):
     response = table.query(KeyConditionExpression=Key('username').eq(username))
-    if 'username' in response['Items'][0].keys():
+    if len(response['Items']) > 0:
         return response['Items'][0]
