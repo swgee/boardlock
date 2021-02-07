@@ -20,6 +20,7 @@ body {
     margin: 0 auto;
     text-align: center;
     width: max-content;
+    color: black;
 }
 .signup .form-container input {
     width: 300px;
