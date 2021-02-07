@@ -67,5 +67,6 @@ Plaintext data is sent in transit:
 * CSRF form tokens
 * Mobile browser templates
 * Fixed UI widths
+* Browser extension to autofill passwords into other sites
 
 README version 1.1
