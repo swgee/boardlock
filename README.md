@@ -57,6 +57,6 @@ Plaintext data is sent in transit:
 ## Lessons Learned
 * Understand the software before writing the code - used the Flask session cookie to store the root password without understanding session hijacking and falsely believing the cookie was encrypted, not signed.
 * Test on production just as much as locally - different environments will render different results, especially when using various cloud infrastructures.
-* The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack or keep it in a notepad to copy and paste. No websites or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and exer experience.
+* The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack or keep it in a notepad to copy and paste. No networks or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and user experience.
 
 README version 1.1
