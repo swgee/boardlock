@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, serif;
+    background: url("/static/images/beach-sunset.jpg") no-repeat center center fixed;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: black;
+}
+.signup .top-container {
+    margin: 0 auto;
+    text-align: center;
+}
+.signup .form-container {
+    font-size: 20px;
+    text-align: right;
+    display: inline-block;
+}
+.signup .random-container {
+    padding-top: 25px;
+    margin: 0 auto;
+    text-align: center;
+    width: max-content;
+    color: white;
+}
+.signup .form-container input {
+    width: 300px;
+}
+.signup .form-container div {
+    padding-top: 5px;
+}
+.signup input:invalid {
+    box-shadow: none;
+}
+.signup .top-container .show-password {
+    padding: 1px 1px 1px 1px;
+    position: relative;
+    bottom: 29px;
+    font-family: Arial, serif;
+    cursor: pointer;
+    border: none;
+}
+.signup a, .submit button {
+    font-family: Arial, serif;
+    font-size: 18px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgba(0,160,0,1);
+    color: white;
+    cursor: pointer;
+    outline: none;
+    border: none;
+}
+.signup a:hover, .submit button:hover {
+    opacity: 0.8;
+}
+.submit button:disabled {
+    opacity: 0.5;
+}
+.signup .submit {
+    margin: 0 auto;
+    text-align: center;
+    line-height: 2px;
+    font-size: 18px;
+    color: white;
+}
+.signup .requirement-container {
+    font-size: 16px;
+    text-align: center;
+    margin: 0 auto;
+    line-height: 6px;
+    font-weight: bold;
+}
+.signup .requirement-container p {
+    display: inline-block;
+}
+.signup .requirement-container .middle::after {
+    content: ', ';
+}
+.complete {
+    color: green;
+}
+.incomplete {
+    color: red;
+}
+.post-error {
+    text-align: center;
+    font-size: 16px;
+    line-height: 0;
+}

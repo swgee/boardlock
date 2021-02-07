@@ -3,7 +3,7 @@ from create_account import store_account_data
 from authentication import create_token, check_token, delete_token
 from config import addresses, secret_key
 import os
-from encryption import update_data, retrieve_data
+from encryption import update_data, retrieve_data, change_password
 
 
 app = Flask(__name__)
@@ -55,6 +55,23 @@ def manager():
         else:
             session.pop('username'), session.pop('token'), session.pop('kek')
             return redirect('/')
+    else:
+        return redirect('/')
+
+@app.route('/change-root', methods=['GET', 'POST'])
+def change_root():
+    if 'username' in session.keys():
+        if request.method == 'POST':
+            old_password = request.form['old']
+            new_password = request.form['password']
+            kek = change_password(session['username'], session['kek'], old_password, new_password)
+            if kek is not None:
+                session['kek'] = kek
+                return render_template('/change_successful.html', link=address)
+            else:
+                return render_template('/change_root.html', error='Root Password Incorrect', link=address)
+        else:
+            return render_template('/change_root.html', error='', link=address)
     else:
         return redirect('/')
 

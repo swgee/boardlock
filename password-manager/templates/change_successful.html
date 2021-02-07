@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BoardWalk - Change Root Password</title>
+    <style>
+        a {
+            font-family: Arial, serif;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: rgba(0,160,0,1);
+            color: white;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
+        a:hover {
+            opacity: 0.8;
+        }
+        body {
+            font-family: Arial, serif;
+            background: lightblue url("/static/images/beach-sunset.jpg") no-repeat center center fixed;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            color: white;
+        }
+        div {
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 10%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p style="padding-bottom: 20px; font-size: 25px">Root password successfully changed.</p>
+    <a id="login" class="button" style="text-decoration: none">Return to Login</a>
+</div>
+    <script> document.getElementById('login').href = '{{link}}/manager'; </script>
+</body>
+</html>

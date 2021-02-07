@@ -25,9 +25,34 @@ def check_password(account, password):
 
 def create_token(username, password):
     account = query_table(username)
-    if check_password(account, password):
-        token = secrets.token_bytes(64)
-        token_hash = sha256(token).hexdigest()
+    if account is not None:
+        if check_password(account, password):
+            token = secrets.token_bytes(64)
+            token_hash = sha256(token).hexdigest()
+            table.put_item(  # update_item not working
+                Item={
+                    'username': account['username'],
+                    'auth_key': account['auth_key'],
+                    'salt': account['salt'],
+                    'data_key': account['data_key'],
+                    'time_created': account['time_created'],
+                    'token_hash': token_hash
+                }
+            )
+            salt = account['salt'].value
+            password = bytes(password, encoding='utf-8')
+            kek = bcrypt.kdf(password, salt, 32, 100)
+            return [token, kek]
+
+def check_token(username, token):
+    account = query_table(username)
+    if account is not None:
+        if sha256(token).hexdigest() == account['token_hash']:
+            return True
+
+def delete_token(username):
+    account = query_table(username)
+    if account is not None:
         table.put_item(  # update_item not working
             Item={
                 'username': account['username'],
@@ -35,32 +60,11 @@ def create_token(username, password):
                 'salt': account['salt'],
                 'data_key': account['data_key'],
                 'time_created': account['time_created'],
-                'token_hash': token_hash
+                'token_hash': ''
             }
         )
-        salt = account['salt'].value
-        password = bytes(password, encoding='utf-8')
-        kek = bcrypt.kdf(password, salt, 32, 100)
-        return [token, kek]
-
-def check_token(username, token):
-    account = query_table(username)
-    if sha256(token).hexdigest() == account['token_hash']:
-        return True
-
-def delete_token(username):
-    account = query_table(username)
-    table.put_item(  # update_item not working
-        Item={
-            'username': account['username'],
-            'auth_key': account['auth_key'],
-            'salt': account['salt'],
-            'data_key': account['data_key'],
-            'time_created': account['time_created'],
-            'token_hash': ''
-        }
-    )
 
 def query_table(username):
     response = table.query(KeyConditionExpression=Key('username').eq(username))
-    return response['Items'][0]
+    if 'username' in response['Items'][0].keys():
+        return response['Items'][0]

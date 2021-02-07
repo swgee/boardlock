@@ -10,7 +10,7 @@ lengthmsg.classList.add('incomplete'); specialmsg.classList.add('incomplete'); n
 messages = [specialmsg,lengthmsg,capitalmsg,numbermsg,matchmsg]
 let pswfield = document.getElementById('psw');
 let confirmpswfield = document.getElementById('confirm-psw');
-let usernamefield = document.getElementById('username');
+let usernamefield = document.getElementById('old');
 let formfields = [pswfield, confirmpswfield, usernamefield]
 
 for (let i = 0; i < formfields.length; i++) {
@@ -22,7 +22,7 @@ for (let i = 0; i < formfields.length; i++) {
     })
 }
 
-function validation() { // client side only, server side also implemented in case of tampering
+function validation() {
     let psw = pswfield.value;
     let confirm_psw = confirmpswfield.value;
     let username = usernamefield.value;

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BoardLock - Signup</title>
-    <link rel="stylesheet" href="/static/css/signup-page.css">
+    <title>BoardLock - Change Root Password</title>
+    <link rel="stylesheet" href="/static/css/change_root.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function(){
@@ -14,22 +14,22 @@
 
 <body>
 <div class="signup">
-    <a id="home" class="button" style="text-decoration: none; text-align: end">Home</a>
+    <a id="home" class="button" style="text-decoration: none; text-align: end">Back To Manager</a>
     <div class="post-error"><p>{{error}}</p></div>
     <div class="top-container">
         <div class="form-container">
             <form id="credentials" method="POST">
                 <div>
-                    <label for="username">Username: </label>
-                    <input id="username" type="text" name="username" oninput="validation()" required>
+                    <label for="old">Old Password: </label>
+                    <input id="old" type="password" name="old" oninput="validation()" required>
                 </div>
                 <div>
-                    <label for="psw">Root Password: </label>
+                    <label for="psw">New Password: </label>
                     <input id="psw" type="text" name="password" oninput="validation()" required>
                 </div>
             </form>
             <div>
-                <label for="confirm-psw">Confirm Password: </label>
+                <label for="confirm-psw">Confirm New Password: </label>
                 <input id="confirm-psw" type="password" oninput="validation()">
             </div>
         </div>
@@ -44,9 +44,9 @@
         <p id="match">passwords match</p>
     </div>
     <div class="submit">
-        <p>Save your root password in a secure location.</p>
+        <p>Remember, save your new root password in a secure location.</p>
         <p>Without it, your data cannot be decrypted.</p>
-        <button id="submitButton" type="submit" form="credentials">Create New Account</button>
+        <button id="submitButton" type="submit" form="credentials">Change Root Password</button>
     </div>
     <div id="password-generator" class="random-container"></div>
     <script src="/static/js/signup-page.js"></script>
@@ -54,8 +54,8 @@
         $('input').attr('autocomplete', 'new-password');
     </script>
     <script>
-        document.getElementById("credentials").action ="{{link}}/signup";
-        document.getElementById('home').href = "{{link}}";
+        document.getElementById("credentials").action ="{{link}}/change-root";
+        document.getElementById('home').href = "{{link}}/manager";
         document.getElementById('psw').type = 'password';
     </script>
 </div>
