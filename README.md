@@ -15,7 +15,7 @@ The best password managers are often ran locally in the OS or browser, such as K
 ### Results:
 The application is online and fully functional, barring the search database feature. Additionally, the site uses fixed widths based on percentages so adjusting the browser window moves buttons around and it isn't optizimed for mobile browsers. I might go back and fix these UI issues when I get the chance, but at this point I believe I have accomplished the original goal by prioritizing security.
 
-[manager](https://github.com/swgee/boardlock/blob/master/password-manager/static/images/manager.PNG)
+![manager](https://github.com/swgee/boardlock/blob/master/password-manager/static/images/manager.PNG)
 
 ## Application Design:
 ### Server:
