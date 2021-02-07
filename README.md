@@ -45,18 +45,18 @@ Cookie security:
 * Signed to prevent forgery
 * HttpOnly to prevent XSS
 * Session hijacking is not enough to gain access or decrypt data, need the KEK and data_key and data (which requires access to both S3 and DynamoDB) to see passwords. Storing the KEK is not optimal but is necessary for increased usability and much, much better than storing the root password in the cookie.
-* Attackers gaining the auth_token creates a security hole but is mitigated by the user logging out when they're done or closing the browser, which deletes the existing token (timed tokens are a future security update). It is common for PW managers running locally as well not to stay signed in.
+* Attackers gaining the auth_token creates a security hole but is mitigated by the user logging out when they're done or closing the browser, which deletes the existing token (timed tokens are a future security update). It is common for PW managers running locally to not to stay signed in as well.
 
 Plaintext data is sent in transit:
 * Automatic HTTPS upgrades
-* HSTS enabled for boardlock subdomain to prevent SSL stripping. 
+* HSTS enabled for boardlock subdomain to prevent SSL stripping
 * Secure = True Flask session cookie to prevent cookie being sent over HTTP
-* Hashing passwords in transit is vulnerable to Pass the Hash
-* Client-side localStorage is generally less secure than cookies.
+* Hashing passwords in transit is vulnerable to Pass the Hash and provides little benefit
+* Client-side localStorage is generally less secure than cookies
 
 ## Lessons Learned
 * Understand the software before writing the code - used the Flask session cookie to store the root password without understanding session hijacking and falsely believing the cookie was encrypted, not signed.
 * Test on production just as much as locally - different environments will render different results, especially when using various cloud infrastructures.
-* The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack or keep it in a notepad to copy and paste. No networks or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and user experience.
+* The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack. No networks or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and user experience.
 
 README version 1.1
