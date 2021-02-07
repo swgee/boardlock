@@ -59,4 +59,13 @@ Plaintext data is sent in transit:
 * Test on production just as much as locally - different environments will render different results, especially when using various cloud infrastructures.
 * The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack. No networks or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and user experience.
 
+# To-do
+* Search Database
+* Token expiration
+* Input validation / fuzzing
+* Password strength meter
+* CSRF form tokens
+* Mobile browser templates
+* Fixed UI widths
+
 README version 1.1
