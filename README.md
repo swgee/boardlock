@@ -33,7 +33,7 @@ DynamoDB Database - all sensitive data (passwords, encryption keys) is encrypted
 If breached, bcrypt and random salts will make it very difficult for root passwords to be brute-forced.
 ![DB](https://github.com/swgee/boardlock/blob/master/password-manager/static/images/dynamodb.PNG)
 
-All encryption/decryption occurs on the server, and no sensitive data remains in memory as it is all passed as function parameters. Client-side decryption would decrease the server's compute load, but has issues of its own. The keys or password would need to be stored in localStorage to provide some usability which could expose the user to Cross Site Scripting.
+All encryption/decryption occurs on the server, and no sensitive data remains in memory as it is all passed as function parameters and deleted after execution. Client-side decryption would decrease the server's compute load, but has issues of its own. The keys or password would need to be stored in localStorage to provide some usability which could expose the user to Cross Site Scripting.
 
 In order to bypass requiring the user to enter their root password for any change/request, the KEK must be stored in a Flask session cookie. 
 
@@ -60,6 +60,7 @@ Plaintext data is sent in transit:
 * The relationship between usability/convenience and security is not so clear. The application would be more secure if no data was stored as cookies on the user's browser, but in that case, they would need to enter their password for every change and every request. That would encourage users to choose insecure passwords that are easy to enter and thus crack. No networks or applications are impenetrable, and it's up to the developers to figure out the right balance of data protection and user experience.
 
 # To-do
+* Code comments
 * Search Database
 * Token expiration
 * Input validation / fuzzing
