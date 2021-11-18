@@ -70,4 +70,3 @@ Plaintext data is sent in transit:
 * Fixed UI widths
 * Browser extension to autofill passwords into other sites
 
-README version 1.1
