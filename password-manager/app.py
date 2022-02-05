@@ -5,19 +5,20 @@ from config import addresses, secret_key
 import os
 from encryption import update_data, retrieve_data, change_password
 
-
 app = Flask(__name__)
 
 address = addresses['p']
 app.secret_key = secret_key
-if 'benkofman.com' in address:
-	app.config['SESSION_COOKIE_SECURE'] = True # Flask session httpOnly set to True by default
+if 'boardlock.benkofman.com' in address:
+    app.config['SESSION_COOKIE_SECURE'] = True  # Flask session httpOnly set to True by default
 else:
-	app.config['SESSION_COOKIE_SECURE'] = False
+    app.config['SESSION_COOKIE_SECURE'] = False
+
 
 @app.route('/favicon.ico')
 def return_icon():
     return send_from_directory(os.path.join(app.root_path, 'static/images'), 'secured-lock.png')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def landing_page():
@@ -35,6 +36,7 @@ def landing_page():
             return render_template('landing-page.html', error='Invalid credentials.', link=address)
     return render_template('landing-page.html', link=address)
 
+
 @app.route('/signup', methods=['GET', 'POST'])
 def signup_page():
     if request.method == 'POST':
@@ -45,20 +47,24 @@ def signup_page():
             return render_template('signup-page.html', error='Username is unavailable.', link=address)
     return render_template('signup-page.html', error='', link=address)
 
+
 @app.route('/manager', methods=['GET', 'POST'])
 def manager():
     if 'username' in session.keys() and 'token' in session.keys() and 'kek' in session.keys():
         if check_token(session['username'], session['token']):
             if request.method == 'POST':
                 data = request.form['data']
-                return render_template('/manager.html', username=session['username'], data=update_data(data, session['username'], session['kek']), link=address)
+                return render_template('/manager.html', username=session['username'],
+                                       data=update_data(data, session['username'], session['kek']), link=address)
             else:
-                return render_template('/manager.html', username=session['username'], data=retrieve_data(session['username'], session['kek']), link=address)
+                return render_template('/manager.html', username=session['username'],
+                                       data=retrieve_data(session['username'], session['kek']), link=address)
         else:
             session.pop('username'), session.pop('token'), session.pop('kek')
             return redirect('/')
     else:
         return redirect('/')
+
 
 @app.route('/change-root', methods=['GET', 'POST'])
 def change_root():
@@ -76,6 +82,7 @@ def change_root():
             return render_template('/change_root.html', error='', link=address)
     else:
         return redirect('/')
+
 
 @app.route('/logout')
 def logout():
