@@ -8,10 +8,12 @@ from encryption import update_data, retrieve_data, change_password
 
 app = Flask(__name__)
 
-address = addresses['l']
+address = addresses['p']
 app.secret_key = secret_key
-app.config['SESSION_COOKIE_SECURE'] = True
-# Flask session httpOnly set to True by default
+if 'benkofman.com' in address:
+	app.config['SESSION_COOKIE_SECURE'] = True # Flask session httpOnly set to True by default
+else:
+	app.config['SESSION_COOKIE_SECURE'] = False
 
 @app.route('/favicon.ico')
 def return_icon():
