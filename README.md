@@ -1,5 +1,5 @@
 # BoardLock Online Password Manager
-<a href="https://boardlock.benkofman.com">boardlock.benkofman.com</a>
+<a href="https://benkofman.com">https://benkofman.com</a>
 
 ## Introduction
 About three weeks ago, I started making this website as a way to learn more about application security and web development and to improve my programming skills. Since I have just begun my final semester in college I will need to take a break from the project, but have gotten to a point where the application is usable.
