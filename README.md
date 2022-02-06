@@ -15,7 +15,7 @@ The best password managers are often run locally in the OS or browser, such as K
 ### Results:
 The application is online and fully functional, barring the search database feature. Additionally, the site uses fixed widths based on percentages so adjusting the browser window moves buttons around and it isn't optimized for mobile browsers. I might go back and fix these UI issues when I get the chance, but at this point, I believe I have accomplished the original goal by prioritizing security.
 
-![manager](password-manager/static/images/manager.png)
+![manager](static/images/manager.png)
 
 ## Application Design:
 ### Server:
@@ -31,7 +31,7 @@ The application is online and fully functional, barring the search database feat
 
 DynamoDB Database - all sensitive data (passwords, encryption keys) is encrypted/hashed/unknown to me.
 If breached, bcrypt and random salts will make it very difficult for root passwords to be brute-forced.
-![DB](https://github.com/swgee/boardlock/blob/master/password-manager/static/images/dynamodb.PNG)
+![DB](https://github.com/swgee/boardlock/blob/master/static/images/dynamodb.PNG)
 
 All encryption/decryption occurs on the server, and no sensitive data remains in memory as it is all passed as function parameters and deleted after execution. Client-side decryption would decrease the server's compute load, but has issues of its own. The keys or password would need to be stored in localStorage to provide some usability which could expose the user to Cross-Site Scripting.
 
