@@ -69,4 +69,4 @@ Plaintext data is sent in transit:
 * Mobile browser templates
 * Fixed UI widths
 * Browser extension to autofill passwords into other sites
-
+* IP address request limiting
