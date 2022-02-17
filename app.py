@@ -1,8 +1,13 @@
+import random
+import os
+import requests
+import string
+
 from flask import Flask, render_template, request, send_from_directory, redirect, session
+
 from create_account import store_account_data
 from authentication import create_token, check_token, delete_token
 from config import address, secret_key
-import os
 from encryption import update_data, retrieve_data, change_password
 
 app = Flask(__name__)
@@ -25,6 +30,7 @@ def landing_page():
         return redirect('/manager')
     if request.method == 'POST':
         username, password = request.form['username'], request.form['password']
+        ### Login code > ###
         auth_data = create_token(username, password)  # returns None if wrong login
         if auth_data is not None:
             session['username'] = username
@@ -33,6 +39,7 @@ def landing_page():
             return redirect('/manager')
         else:
             return render_template('landing-page.html', error='Invalid credentials.', link=address)
+        ### < Login code ###
     return render_template('landing-page.html', link=address)
 
 
@@ -94,6 +101,24 @@ def logout():
             return redirect('/')
     else:
         return redirect('/')
+
+
+@app.route('/demo')
+def demo():
+    username = "demo" + str(random.randint(1000000, 9999999))
+    password = ''.join(
+        random.choices(string.ascii_uppercase + string.punctuation + string.ascii_lowercase + string.digits, k=12))
+    requests.post(address + '/signup', data={'username': username, 'password': password})
+    ### Login code > ###
+    auth_data = create_token(username, password)  # returns None if wrong login
+    if auth_data is not None:
+        session['username'] = username
+        session['token'] = auth_data[0]
+        session['kek'] = auth_data[1]
+        return redirect('/manager')
+    else:
+        return render_template('landing-page.html', error='Duplicate demo account, try again.', link=address)
+    ### < Login code ###
 
 
 if __name__ == '__main__':

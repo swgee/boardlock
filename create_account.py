@@ -15,12 +15,14 @@ bucket = s3.Bucket('boardlock-user-data')
 
 filler = 'SpaceBook\tLukeBoardWalker\tUsetheforce456\twww.spacebook.com\tSocial Media\t5/4/1977 03:27'
 
+
 def create_starting_csv():
     buffer = BytesIO()
     stream_writer = codecs.getwriter('utf-8')
     wrapper_file = stream_writer(buffer)
     wrapper_file.write(filler)
     return buffer.getvalue()
+
 
 def generate_auth_data(password):
     # encrypt password
@@ -39,6 +41,7 @@ def generate_auth_data(password):
     encrypted_data_key = key_encrypt.encrypt(data_key)
 
     return [auth_key, salt, encrypted_data_key, blank_csv]
+
 
 def store_account_data(username, password):
     response = table.query(KeyConditionExpression=Key('username').eq(username))

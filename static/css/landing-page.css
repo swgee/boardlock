@@ -64,3 +64,12 @@ a:hover, button:hover {
     padding: 10px 10px;
     font-size: 16px;
 }
+.website {
+    position: absolute;
+    text-decoration: none;
+    right: 1%;
+    top: 1%;
+    width: 120px;
+    padding: 10px 10px;
+    font-size: 16px;
+}

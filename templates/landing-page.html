@@ -9,6 +9,7 @@
 
 <body>
 <a class="github" href="https://github.com/swgee/boardlock">Code on GitHub</a>
+<a class="website" href="https://benkofman.com">benkofman.com</a>
 <div class="text-container">
     <p style="font-size: 30px; font-weight: bold">Welcome to BoardLock!</p>
     <p style="font-size: 20px">A secure online password storage solution.</p>
@@ -31,8 +32,12 @@
         <button type="submit">Login</button>
     </form>
     <a id="signup" class="button" style="text-decoration: none">Create New Account</a>
+    <a id="demo" class="button" style="text-decoration: none">Login With Demo Account</a>
 </div>
-<script> document.getElementById("signup").href = '{{link}}/signup'; </script>
+<script>
+    document.getElementById("signup").href = '{{link}}/signup';
+    document.getElementById("demo").href = '{{link}}/demo';
+</script>
 </body>
 
 </html>
