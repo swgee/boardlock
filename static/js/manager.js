@@ -215,12 +215,24 @@ function delete_rows() {
     post_data()
 }
 
-function change_password() {
-
-}
-
-function search() {
-
+function search(value) {
+    for (let r = 0; row = document.getElementById("data_table").lastChild.childNodes[r]; r++) {
+        let contains_data = false;
+        for (let c = 0; col = row.childNodes[c]; c++) {
+            if (col.innerHTML.toLowerCase().includes(value.toLowerCase()) && value.length > 0) {
+                contains_data = true;
+            }
+        }
+        if (contains_data) {
+            row.style.display = "";
+        }
+        else {
+            row.style.display = "none";
+        }
+        if (value.length == 0) {
+            row.style.display = "";
+        }
+    }
 }
 
 function export_database() {

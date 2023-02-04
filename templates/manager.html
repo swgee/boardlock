@@ -25,7 +25,7 @@
         </div>
         <div class="searchbar">
             <label for="search">Search Database: </label>
-            <input id="search" value="In development" type="text" readonly="readonly" onfocus="this.removeAttribute('readonly');">
+            <input oninput="search(this.value)" id="search" value="" type="text" readonly="readonly" onfocus="this.removeAttribute('readonly');">
         </div>
         <div style="float: right">
             <a id="export" onclick="export_database()" style="text-decoration: none">Export Database</a>
