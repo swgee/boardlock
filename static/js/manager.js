@@ -17,7 +17,7 @@ if (data.length > 0) {
     // append data to table
     let table = "";
     for (let i = 0; i < entries.length; i++) {
-        entries[i] = entries[i].split('\t');
+        entries[i] = entries[i].split('_____');
         table += "<tr>"
         for (let x = 0; x < entries[i].length; x++) {
             table += "<td>" + entries[i][x] + "</td>";
@@ -179,7 +179,7 @@ function compile_table() {
         for (let c = 0; c < cells.length-1; c++) {
             cell = cells[c]
             data_string += cell.innerHTML
-            data_string += '\t'
+            data_string += '_____'
         }
         cell = cells[cells.length-1]
         data_string += cell.innerHTML
@@ -238,7 +238,7 @@ function search(value) {
 function export_database() {
     data = compile_table()
     data = data.replaceAll('|||||', '\n')
-    data = data.replaceAll('\t',',')
+    data = data.replaceAll('_____',',')
     let csv = "data:text/csv;charset=utf-8," + data
     let encodedUri = encodeURI(csv);
     exportButton.setAttribute('href', encodedUri)

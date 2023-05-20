@@ -13,7 +13,7 @@ table = dynamodb.Table('boardlock-account-data')
 s3 = boto3.resource('s3')
 bucket = s3.Bucket('boardlock-user-data')
 
-filler = 'SpaceBook\tLukeBoardWalker\tUsetheforce456\twww.spacebook.com\tSocial Media\t5/4/1977 03:27'
+filler = 'SpaceBook_____LukeBoardWalker_____Usetheforce456_____www.spacebook.com_____Social Media_____5/4/1977 03:27'
 
 
 def create_starting_csv():
