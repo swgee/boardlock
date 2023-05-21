@@ -80,7 +80,28 @@ function random_string() {
     for (let i = 0; i < numChar; i++) {
         password = password.concat(characterSet[Math.floor(Math.random() * characterSet.length)])
     }
-    return password;
+    let l = false, u = false, n = false, s = false;
+    for (let i = 0; i < password.length; i++) {
+        if (lowercase.includes(password[i])) {
+            l = true;
+        }
+        if (uppercase.includes(password[i])) {
+            u = true;
+        }
+        if (numbers.includes(password[i])) {
+            n = true;
+        }
+        if (special.includes(password[i])) {
+            s = true;
+        }
+    }
+    if (l === false || u === false || n === false || s === false) {
+        console.log(password)
+        return random_string()
+    }
+    else {
+        return password;
+    }
 }
 
 function show_password(field, button) {
